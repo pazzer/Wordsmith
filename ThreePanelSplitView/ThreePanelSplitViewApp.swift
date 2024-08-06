@@ -12,9 +12,9 @@ import SwiftData
 struct ThreePanelSplitViewApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Word.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -24,7 +24,10 @@ struct ThreePanelSplitViewApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup {
+        
+        SampleDataManager.loadSampleData(into: sharedModelContainer.mainContext)
+        
+        return WindowGroup {
             ContentView()
         }
         .modelContainer(sharedModelContainer)

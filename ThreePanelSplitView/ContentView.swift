@@ -8,59 +8,66 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
 
+struct ContentView: View {
+    
+    @State var selectedSidebarItem: Sidebar.Item?
+    @State var selectedWord: Word?
+    
+    
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+            Sidebar(selectedItem: $selectedSidebarItem)
+        } content: {
+            if let selectedSidebarItem = selectedSidebarItem {
+                switch selectedSidebarItem {
+                case .words:
+                    WordsList(selectedWord: $selectedWord)
+                case .sources:
+                    Text("Not Implemented")
+                case .groups:
+                    Text("Not Implemented")
                 }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+                
             }
         } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            if let selectedWord = selectedWord {
+                WordDetail(word: selectedWord)
             }
         }
     }
+    
+    
+    
+    
 }
 
+
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    
+    struct Preview: View {
+        
+        var body: some View {
+            ContentView()
+        }
+    }
+    
+    do {
+        
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let schema = Schema([
+            Word.self,
+        ])
+        
+        
+        let container = try ModelContainer(for: schema, configurations: config)
+        
+        SampleDataManager.loadSampleData(into: container.mainContext)
+        
+        return Preview()
+            .modelContainer(container)
+        
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }
