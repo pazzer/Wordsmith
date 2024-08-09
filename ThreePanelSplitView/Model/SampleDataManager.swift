@@ -6,9 +6,13 @@
 //
 
 import SwiftData
+import AppKit.NSImage
 
 
 class SampleDataManager {
+    
+    typealias SDImage = ThreePanelSplitView.Image
+    
     
     private enum WordType: String, CaseIterable {
         case adjective
@@ -16,6 +20,11 @@ class SampleDataManager {
         case adverb
         case verb
         case unknown
+    }
+    
+    private enum ImageResource: String, CaseIterable {
+        case arabesquePattern = "arabesque-pattern"
+        case arabesqueBallet = "arabesque-ballet"
     }
     
     private enum Group: CaseIterable {
@@ -68,9 +77,7 @@ class SampleDataManager {
         Self.loadGroups(into: context)
         Self.loadWordsAndDefinitions(into: context)
     }
-    
-    
-    
+
     private static func loadWordTypes(into context: ModelContext) {
         WordType.allCases.forEach {
             context.insert( ThreePanelSplitView.WordType(name: $0.rawValue ))
@@ -89,45 +96,66 @@ class SampleDataManager {
         }
     }
 
-   private static func loadWordsAndDefinitions(into context: ModelContext) {
+    private static func loadWordsAndDefinitions(into context: ModelContext) {
+        
+        var imagesMap = [ImageResource : UUID]()
+        
         Self.wordsAndDefinitions.forEach { (word, definitions)  in
             let word = Word(word: word)
             context.insert(word)
             
-            definitions.forEach { (text, wordType, source, groups) in
+            definitions.forEach { (text, wordType, source, groups, images) in
                 
                 let definition = Definition(definition: text)
                 context.insert(definition)
                 
                 if let name = wordType?.rawValue,
-                    let wordType = ThreePanelSplitView.WordType.withName(name, in: context) {
+                   let wordType = ThreePanelSplitView.WordType.withName(name, in: context) {
                     definition.wordType = wordType
                 }
                 
                 if let name = source?.name,
-                    let source = Source.withName(name, in: context) {
+                   let source = Source.withName(name, in: context) {
                     definition.source = source
                 }
                 
-                for group in groups {
-                    if let group = ThreePanelSplitView.Group.withName(group.name, in: context) {
-                        definition.groups.append(group)
+                groups
+                    .compactMap {  ThreePanelSplitView.Group.withName($0.name, in: context) }
+                    .forEach { definition.groups.append($0) }
+                
+                images
+                    .forEach { imageResource in
+                        if let uuid = imagesMap[imageResource] {
+                            if let image = Image.withUUID(uuid, in: context) {
+                                definition.images.append(image)
+                            } else {
+                                NSLog("failed to fetch image with id \(uuid.uuidString)")
+                            }
+                        } else {
+                            let nsImage = NSImage(imageLiteralResourceName: imageResource.rawValue)
+                            let image = Image(image: nsImage)
+                            context.insert(image)
+                            definition.images.append(image)
+                            imagesMap[imageResource] = image.uuid
+                        }
                     }
-                }
                 
                 word.definitions.append(definition)
             }
         }
     }
     
-    private static var wordsAndDefinitions: [String: [(String, WordType?, DefinitionSource?, [Group])]] {
+
+    
+    private static var wordsAndDefinitions: [String: [(String, WordType?, DefinitionSource?, [Group], [ImageResource])]] {
          [
             "sepulchre":
                 [(
                     "a small room or monument, cut in rock or built of stone, in which a dead person is laid or buried.",
                     .noun,
                     DefinitionSource.oxfordLanguages,
-                    [.theChristianChurch, .architecture]
+                    [.theChristianChurch, .architecture],
+                    []
                 )],
             
             "mausoleum":
@@ -135,7 +163,8 @@ class SampleDataManager {
                     "a stately or impressive building housing a tomb or group of tombs.",
                     .noun,
                     DefinitionSource.cambridge,
-                    [.theChristianChurch]
+                    [.theChristianChurch],
+                    []
                 )],
             
             "loop-hole":
@@ -143,13 +172,15 @@ class SampleDataManager {
                     "a small opening through which small arms may be fired.",
                     .noun,
                     .merriamWebster,
-                    [.architecture]
+                    [.architecture],
+                    []
                 ),
                  (
                     "a small mistake in an agreement or law that gives someone the chance to avoid having to do something.",
                     .noun,
                     .cambridge,
-                    [.theLaw]
+                    [.theLaw],
+                    []
                  )],
             
             "parapet":
@@ -157,7 +188,8 @@ class SampleDataManager {
                     "a low protective wall along the edge of a roof, bridge, or balcony.",
                     .noun,
                     .oxfordLanguages,
-                    [.architecture]
+                    [.architecture],
+                    []
                 )],
             
             "retaining wall":
@@ -165,7 +197,8 @@ class SampleDataManager {
                     "a wall designed to hold in place a mass of earth or the like, such as the edge of a terrace or excavation.",
                     .unknown,
                     .wikipedia,
-                    [.architecture]
+                    [.architecture],
+                    []
                 )],
             
             "stertor":
@@ -173,6 +206,7 @@ class SampleDataManager {
                     "laborious or noisy breathing caused by obstructed air passages",
                     .noun,
                     .collins,
+                    [],
                     []
                 )],
             
@@ -181,19 +215,22 @@ class SampleDataManager {
                     "an ornate composition, especially for the piano.",
                     .noun,
                     .wiktionary,
+                    [],
                     []
                 ),
                  (
                     "a ballet position in which the dancer stands on one leg, with the other raised backwards and the arms outstretched.",
                     .noun,
                     .wiktionary,
-                    []
+                    [],
+                    [.arabesqueBallet]
                  ),
                  (
                     "an elaborate design of intertwined floral figures or complex geometrical patterns, mainly used in Islamic art and architechture.",
                     .noun,
                     .wiktionary,
-                    []
+                    [],
+                    [.arabesquePattern]
                  )
                 ],
             
@@ -202,6 +239,7 @@ class SampleDataManager {
                     "take (a position of power or importance) illegally or by force.",
                     .verb,
                     .oxfordLanguages,
+                    [],
                     []
                 )],
             

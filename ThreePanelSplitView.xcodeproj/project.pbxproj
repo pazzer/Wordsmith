@@ -24,6 +24,7 @@
 		CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F472C62BD2700C53503 /* WordRow.swift */; };
 		CF9D9F4A2C62BDB800C53503 /* WordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F492C62BDB800C53503 /* WordDetail.swift */; };
 		CF9D9F4C2C62C48100C53503 /* NewWordSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */; };
+		CFAE90D92C6404E8001DE67A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90D82C6404E8001DE67A /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		CF9D9F472C62BD2700C53503 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		CF9D9F492C62BDB800C53503 /* WordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetail.swift; sourceTree = "<group>"; };
 		CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWordSheet.swift; sourceTree = "<group>"; };
+		CFAE90D82C6404E8001DE67A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,6 @@
 				CF9D9F432C62B6C900C53503 /* SidebarRow.swift */,
 				CF9D9F272C62B34200C53503 /* Assets.xcassets */,
 				CF9D9F292C62B34200C53503 /* ThreePanelSplitView.entitlements */,
-				CF9D9F372C62B36600C53503 /* Definition.swift */,
 				CF9D9F402C62B36F00C53503 /* Model */,
 				CF9D9F2A2C62B34200C53503 /* Preview Content */,
 			);
@@ -111,6 +112,8 @@
 				CF9D9F362C62B36600C53503 /* SampleDataManager.swift */,
 				CF9D9F352C62B36600C53503 /* Source.swift */,
 				CF9D9F342C62B36500C53503 /* Word.swift */,
+				CF9D9F372C62B36600C53503 /* Definition.swift */,
+				CFAE90D82C6404E8001DE67A /* Image.swift */,
 				CF9D9F332C62B36500C53503 /* WordType.swift */,
 			);
 			path = Model;
@@ -195,6 +198,7 @@
 				CF9D9F3D2C62B36700C53503 /* SampleDataManager.swift in Sources */,
 				CF9D9F3A2C62B36700C53503 /* WordType.swift in Sources */,
 				CF9D9F3C2C62B36700C53503 /* Source.swift in Sources */,
+				CFAE90D92C6404E8001DE67A /* Image.swift in Sources */,
 				CF9D9F3F2C62B36700C53503 /* Nameable.swift in Sources */,
 				CF9D9F222C62B33E00C53503 /* ThreePanelSplitViewApp.swift in Sources */,
 				CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */,
@@ -327,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ThreePanelSplitView/ThreePanelSplitView.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreePanelSplitView/Preview Content\"";
@@ -365,6 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ThreePanelSplitView/ThreePanelSplitView.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreePanelSplitView/Preview Content\"";

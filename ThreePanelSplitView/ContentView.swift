@@ -31,8 +31,8 @@ struct ContentView: View {
                 
             }
         } detail: {
-            if let selectedWord = selectedWord {
-                WordDetail(word: selectedWord)
+            if let selectedWord = Binding($selectedWord) {
+                WordDetail(word: selectedWord, selectedDefinition: .constant(nil))
             }
         }
     }

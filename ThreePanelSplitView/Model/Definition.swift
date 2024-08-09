@@ -14,8 +14,13 @@ class Definition {
     var definition: String
     var wordType: WordType?
     var word: Word!
+    
     var groups: [Group] = []
-    let id = UUID()
+    
+    @Relationship(inverse: \Image.definitions)
+    var images: [Image] = []
+    
+    let uuid = UUID()
     var dateCreated: Date
     
     var source: Source?
@@ -25,6 +30,11 @@ class Definition {
         self.wordType = wordType
         self.source = source
         self.dateCreated = .now
-        
+    }
+    
+    var combinedMetedata: String {
+        let source = source?.name ?? "anon"
+        let type = wordType?.name ?? "type unknown"
+        return [source, type].joined(separator: ", ")
     }
 }
