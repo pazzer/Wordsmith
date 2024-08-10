@@ -22,11 +22,12 @@ struct WordsList: View {
     var body: some View {
         VStack(spacing: 0) {
             List(selection: $selectedWord) {
-                ForEach(words, id: \.id) { word in
+                ForEach(words, id: \.uuid) { word in
                     WordRow(word: word)
                         .tag(word)
                 }
             }
+            
             Divider()
                 
             HStack {

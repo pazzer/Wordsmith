@@ -8,11 +8,9 @@
 import SwiftData
 import AppKit.NSImage
 
+typealias SDImage = ThreePanelSplitView.Image
 
 class SampleDataManager {
-    
-    typealias SDImage = ThreePanelSplitView.Image
-    
     
     private enum WordType: String, CaseIterable {
         case adjective
@@ -23,8 +21,11 @@ class SampleDataManager {
     }
     
     private enum ImageResource: String, CaseIterable {
-        case arabesquePattern = "arabesque-pattern"
+        case arabesquePattern1 = "arabesque-pattern1"
+        case arabesquePattern2 = "arabesque-pattern2"
+        case arabesquePattern3 = "arabesque-pattern3"
         case arabesqueBallet = "arabesque-ballet"
+        case mausoleum = "mausoleum"
     }
     
     private enum Group: CaseIterable {
@@ -164,7 +165,7 @@ class SampleDataManager {
                     .noun,
                     DefinitionSource.cambridge,
                     [.theChristianChurch],
-                    []
+                    [.mausoleum]
                 )],
             
             "loop-hole":
@@ -230,7 +231,7 @@ class SampleDataManager {
                     .noun,
                     .wiktionary,
                     [],
-                    [.arabesquePattern]
+                    [.arabesquePattern1, .arabesquePattern2, .arabesquePattern3]
                  )
                 ],
             

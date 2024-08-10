@@ -16,11 +16,11 @@ class WordType: Nameable, CustomDebugStringConvertible {
     @Relationship(deleteRule: .nullify)
     var definitions: [Definition] = []
     
-    let id: UUID
+    let uuid: UUID
     
     init(name: String) {
         self.name = name
-        self.id = UUID()
+        self.uuid = UUID()
         self.definitions = definitions
     }
     

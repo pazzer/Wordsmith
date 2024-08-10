@@ -17,7 +17,7 @@ class Word: CustomDebugStringConvertible {
     
     var word: String
     private(set) var created: Date
-    let id = UUID()
+    let uuid = UUID()
     
     @Relationship(deleteRule: .cascade)
     var definitions: [Definition]

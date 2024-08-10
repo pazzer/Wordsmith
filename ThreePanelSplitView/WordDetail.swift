@@ -11,7 +11,7 @@ import SwiftUI
 
 struct WordDetail: View {
     
-    @Binding var word: Word
+    @Bindable var word: Word
     @Binding var selectedDefinition: Definition?
     
     var sortedDefinitions: [Definition] {
@@ -20,20 +20,13 @@ struct WordDetail: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack(alignment: .center) {
-                TextField("Word", text: $word.word)
-                    .textFieldStyle(.plain)
-                    .font(.largeTitle.bold())
-                    .padding()
-                Spacer()
-            }
-            .background(.white)
+            WordBanner(word: word)
             
             NavigationStack {
                 List(selection: $selectedDefinition) {
                     ForEach($word.definitions, id: \.uuid) { $definition in
                         NavigationLink {
-                            Text("XYZ")
+                            DefinitionView(definition: definition)
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
@@ -94,7 +87,7 @@ struct WordDetail: View {
         @State var word: Word
         
         var body: some View {
-            WordDetail(word: $word, selectedDefinition: .constant(nil))
+            WordDetail(word: word, selectedDefinition: .constant(nil))
         }
     }
     

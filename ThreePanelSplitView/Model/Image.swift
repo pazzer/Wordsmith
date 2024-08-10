@@ -14,6 +14,7 @@ class Image {
     
     var data: Data?
     var uuid = UUID()
+    var dateCreated = Date()
     
     @Relationship(inverse: \Definition.definition)
     var definitions: [Definition] = []

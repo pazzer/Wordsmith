@@ -11,8 +11,8 @@ import SwiftData
 
 struct ContentView: View {
     
-    @State var selectedSidebarItem: Sidebar.Item?
-    @State var selectedWord: Word?
+    @State var selectedSidebarItem: Sidebar.Item? = nil
+    @State var selectedWord: Word? = nil
     
     
     var body: some View {
@@ -31,7 +31,8 @@ struct ContentView: View {
                 
             }
         } detail: {
-            if let selectedWord = Binding($selectedWord) {
+            
+            if let selectedWord = selectedWord {
                 WordDetail(word: selectedWord, selectedDefinition: .constant(nil))
             }
         }

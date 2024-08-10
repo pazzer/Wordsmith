@@ -13,12 +13,14 @@ class Definition {
     
     var definition: String
     var wordType: WordType?
+    
+    @Relationship(inverse: \Word.definitions)
     var word: Word!
     
     var groups: [Group] = []
     
     @Relationship(inverse: \Image.definitions)
-    var images: [Image] = []
+    var images: [SDImage] = []
     
     let uuid = UUID()
     var dateCreated: Date

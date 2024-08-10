@@ -15,7 +15,7 @@ class Source {
     
     var name: String
     var definitions: [Definition] = []
-    let id = UUID()
+    let uuid = UUID()
     
     init(name: String) {
         self.name = name
