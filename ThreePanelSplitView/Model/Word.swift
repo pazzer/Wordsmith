@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Word: CustomDebugStringConvertible {
+final public class Word: CustomDebugStringConvertible {
     
     enum ValidationError: LocalizedError {
         case isDuplicate
@@ -59,7 +59,7 @@ class Word: CustomDebugStringConvertible {
         return count == 0
     }
     
-    var debugDescription: String {
+    public var debugDescription: String {
         let definitions = definitions.map { definition in
             definition.definition.prefix(12)
         }.joined(separator: "; ")

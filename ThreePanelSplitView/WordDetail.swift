@@ -13,10 +13,26 @@ struct WordDetail: View {
     
     @Bindable var word: Word
     @Binding var selectedDefinition: Definition?
+    @Environment(\.modelContext) private var context
     
     var sortedDefinitions: [Definition] {
         word.definitions.sorted { $0.dateCreated > $1.dateCreated }
     }
+    
+    
+    @Query(sort: \Definition.dateCreated, order: .reverse)
+    var definitions: [Definition]
+    
+    init(word: Word, selectedDefinition: Binding<Definition?>) {
+        self.word = word
+        let targetUUID = word.uuid
+        self._definitions = Query(filter: #Predicate {
+            $0.word?.uuid == targetUUID
+        }, sort: \.dateCreated)
+        self._selectedDefinition = selectedDefinition
+    }
+    
+    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,7 +40,7 @@ struct WordDetail: View {
             
             NavigationStack {
                 List(selection: $selectedDefinition) {
-                    ForEach($word.definitions, id: \.uuid) { $definition in
+                    ForEach(definitions, id: \.uuid) { definition in
                         NavigationLink {
                             DefinitionView(definition: definition)
                         } label: {
@@ -51,6 +67,17 @@ struct WordDetail: View {
                             }
                             .padding(.bottom, 4)
                         }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                word.definitions.removeAll(where: {$0.uuid == definition.uuid})
+                                context.delete(definition)
+                                
+                                try? context.save()
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+
+                        }
                     }
                 }
                 .scrollContentBackground(.hidden)
@@ -61,7 +88,7 @@ struct WordDetail: View {
                         .foregroundStyle(.quinary)
                     HStack {
                         Button(action: {
-    //                        newWordSheetPresented.toggle()
+                            newDefinition()
                             
                         }, label: {
                             Label("Add Definition", systemImage: "plus")
@@ -77,6 +104,22 @@ struct WordDetail: View {
             }
         }
     }
+    
+    
+    func newDefinition() {
+        
+        let definition = Definition(definition: "\(word.word) means...")
+        
+        withAnimation {
+            context.insert(definition)
+            word.definitions.append(definition)
+            
+        }
+        
+        
+        
+        
+    }
 }
 
 
@@ -88,6 +131,7 @@ struct WordDetail: View {
         
         var body: some View {
             WordDetail(word: word, selectedDefinition: .constant(nil))
+            
         }
     }
     
