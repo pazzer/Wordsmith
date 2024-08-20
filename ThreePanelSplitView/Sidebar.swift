@@ -50,14 +50,3 @@ struct Sidebar: View {
         }
     }
 }
-
-//struct FolderListView: View {
-//    
-//    @Environment(\.modelContext) private var context
-//
-//    @Query(sort: \Folder.creationDate, order: .forward)
-//    var folders: [Folder]
-//
-//    @Binding var selectedFolder: Folder?
-//    
-    

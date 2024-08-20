@@ -52,6 +52,7 @@
 		CFAE90D82C6404E8001DE67A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		CFAE90DA2C667E72001DE67A /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		CFAE90DC2C6680D0001DE67A /* WordBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBanner.swift; sourceTree = "<group>"; };
+		CFD1D2392C74AC8B0023BA90 /* Next.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Next.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 		CF9D9F152C62B33E00C53503 = {
 			isa = PBXGroup;
 			children = (
+				CFD1D2392C74AC8B0023BA90 /* Next.md */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
 				CF9D9F202C62B33E00C53503 /* ThreePanelSplitView */,
 				CF9D9F1F2C62B33E00C53503 /* Products */,
