@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct NewWordSheet: View {
     
@@ -17,6 +17,15 @@ struct NewWordSheet: View {
     @Binding var isPresented: Bool
     
     @Binding var selectedWord: Word?
+    
+    @Query var words: [Word]
+    
+    func validateWord() {
+        let candidate = word.trimmingCharacters(in: .whitespaces).lowercased()
+        invalidWord = word.isEmpty || words.first(where: {$0.word.lowercased() == candidate } ) != nil
+    }
+    
+    @State var invalidWord = true
     
     var body: some View {
         
@@ -35,6 +44,7 @@ struct NewWordSheet: View {
                     modelContext.insert(word)
                     isPresented = false
                 }
+                .disabled(invalidWord)
 
             }
         }
@@ -43,6 +53,9 @@ struct NewWordSheet: View {
                 selectedWord = Word.withName(word, in: modelContext)
             }
         })
+        .onChange(of: word) {
+            self.validateWord()
+        }
         .padding()
         
     }

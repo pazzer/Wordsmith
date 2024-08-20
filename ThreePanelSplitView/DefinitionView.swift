@@ -77,38 +77,39 @@ struct DefinitionView: View {
                     .padding(.horizontal)
                     
                     
-                
-                
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                    ForEach($definition.images, id: \.uuid) { $image in
-                        if let nsImage = image.image {
-                            SwiftUI.Image(nsImage: nsImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 148, height: 148)
-                        }
-                    }
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(imageDropPossible ? Color.green : Color(white: 0.85))
-                        .overlay {
-                            SwiftUI.Image(systemName: "photo")
-                                .font(.largeTitle)
-                                .foregroundStyle(.secondary)
-                            
-                        }
-                        .frame(width: 148, height: 148)
-                        .dropDestination(for: Data.self) { items, location in
-                            if let data = items.first, let image = NSImage(data: data) {
-                                addImage(image)
+                VStack {
+                    ZStack {
+                        LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
+                            ForEach($definition.images, id: \.uuid) { $image in
+                                if let nsImage = image.image {
+                                    SwiftUI.Image(nsImage: nsImage)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 148, height: 148)
+                                }
                             }
-                            return false
-                        } isTargeted: { imageDropPossible = $0 }
+                        }
+                        .padding()
+                        .contentMargins(.horizontal, 20.0, for: .scrollContent)
+                    }
+                    Spacer()
+                    Text(imageDropPossible ? "Drop to add!" : "Drag-and-drop images you wish to add.")
+                        .font(.caption)
+                        .foregroundStyle(imageDropPossible ? .darkGreen : .secondary)
+                        .padding()
                     
                     
                 }
-                .padding()
-                . contentMargins(.horizontal, 20.0, for: .scrollContent)
-                Spacer()
+                .dropDestination(for: Data.self) { items, location in
+                    if let data = items.first, let image = NSImage(data: data) {
+                        addImage(image)
+                    }
+                    return false
+                } isTargeted: { imageDropPossible = $0 }
+                
+                
+                
+                
                 
             }
         }

@@ -17,6 +17,8 @@ struct SourcesList: View {
     var sources: [Source]
     
     @Binding var selectedSource: Source?
+    @Environment(\.modelContext) private var context
+
         
     var body: some View {
         VStack(spacing: 0) {
@@ -24,8 +26,17 @@ struct SourcesList: View {
                 ForEach(sources, id: \.uuid) { source in
                     SourceRow(source: source)
                         .tag(source)
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                context.delete(source)
+                                try? context.save()
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                 }
             }
+            
             
             Divider()
                 
