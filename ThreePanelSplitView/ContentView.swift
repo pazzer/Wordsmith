@@ -13,7 +13,7 @@ struct ContentView: View {
     
     @State var selectedSidebarItem: Sidebar.Item? = nil
     @State var selectedWord: Word? = nil
-    
+    @State var selectedSource: Source? = nil
     
     var body: some View {
         NavigationSplitView {
@@ -24,17 +24,30 @@ struct ContentView: View {
                 case .words:
                     WordsList(selectedWord: $selectedWord)
                 case .sources:
-                    Text("Not Implemented")
+                    SourcesList(selectedSource: $selectedSource)
                 case .groups:
                     Text("Not Implemented")
                 }
                 
             }
         } detail: {
-            
-            if let selectedWord = selectedWord {
-                WordDetail(word: selectedWord, selectedDefinition: .constant(nil))
+            if let sidebarItem = selectedSidebarItem {
+                switch sidebarItem {
+                case .words:
+                    if let selectedWord = selectedWord {
+                        WordDetail(word: selectedWord, selectedDefinition: .constant(nil))
+                    }
+                case .sources:
+                    if let selectedSource = selectedSource {
+                        SourceDetail(source: selectedSource)
+                    }
+                case .groups:
+                    Text("Not Implemented")
+                }
+            } else {
+                ContentUnavailableView("No Selection", image: "exclamationmark")
             }
+            
         }
     }
     

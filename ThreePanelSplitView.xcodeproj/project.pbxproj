@@ -27,6 +27,10 @@
 		CFAE90D92C6404E8001DE67A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90D82C6404E8001DE67A /* Image.swift */; };
 		CFAE90DB2C667E72001DE67A /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90DA2C667E72001DE67A /* DefinitionView.swift */; };
 		CFAE90DD2C6680D0001DE67A /* WordBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90DC2C6680D0001DE67A /* WordBanner.swift */; };
+		CFD1D23B2C74AE3B0023BA90 /* SourcesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */; };
+		CFD1D23F2C74AEFB0023BA90 /* NewSourceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */; };
+		CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2402C74B03B0023BA90 /* SourceRow.swift */; };
+		CFD1D2432C74B2AB0023BA90 /* SourceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		CFAE90DA2C667E72001DE67A /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		CFAE90DC2C6680D0001DE67A /* WordBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBanner.swift; sourceTree = "<group>"; };
 		CFD1D2392C74AC8B0023BA90 /* Next.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Next.md; sourceTree = "<group>"; };
+		CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesList.swift; sourceTree = "<group>"; };
+		CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSourceSheet.swift; sourceTree = "<group>"; };
+		CFD1D2402C74B03B0023BA90 /* SourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SourceRow.swift; path = ThreePanelSplitView/SourceRow.swift; sourceTree = "<group>"; };
+		CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,9 @@
 		CF9D9F152C62B33E00C53503 = {
 			isa = PBXGroup;
 			children = (
+				CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */,
+				CFD1D2402C74B03B0023BA90 /* SourceRow.swift */,
+				CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */,
 				CFD1D2392C74AC8B0023BA90 /* Next.md */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
 				CF9D9F202C62B33E00C53503 /* ThreePanelSplitView */,
@@ -92,6 +103,7 @@
 				CF9D9F492C62BDB800C53503 /* WordDetail.swift */,
 				CFAE90DA2C667E72001DE67A /* DefinitionView.swift */,
 				CF9D9F452C62BB6900C53503 /* WordsList.swift */,
+				CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */,
 				CF9D9F472C62BD2700C53503 /* WordRow.swift */,
 				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
 				CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */,
@@ -197,10 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD1D23F2C74AEFB0023BA90 /* NewSourceSheet.swift in Sources */,
 				CF9D9F4A2C62BDB800C53503 /* WordDetail.swift in Sources */,
 				CF9D9F242C62B33E00C53503 /* ContentView.swift in Sources */,
 				CF9D9F462C62BB6A00C53503 /* WordsList.swift in Sources */,
 				CFAE90DD2C6680D0001DE67A /* WordBanner.swift in Sources */,
+				CFD1D23B2C74AE3B0023BA90 /* SourcesList.swift in Sources */,
 				CF9D9F4C2C62C48100C53503 /* NewWordSheet.swift in Sources */,
 				CF9D9F3E2C62B36700C53503 /* Definition.swift in Sources */,
 				CF9D9F442C62B6C900C53503 /* SidebarRow.swift in Sources */,
@@ -208,7 +222,9 @@
 				CF9D9F3A2C62B36700C53503 /* WordType.swift in Sources */,
 				CFAE90DB2C667E72001DE67A /* DefinitionView.swift in Sources */,
 				CF9D9F3C2C62B36700C53503 /* Source.swift in Sources */,
+				CFD1D2432C74B2AB0023BA90 /* SourceDetail.swift in Sources */,
 				CFAE90D92C6404E8001DE67A /* Image.swift in Sources */,
+				CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */,
 				CF9D9F3F2C62B36700C53503 /* Nameable.swift in Sources */,
 				CF9D9F222C62B33E00C53503 /* ThreePanelSplitViewApp.swift in Sources */,
 				CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */,

@@ -14,7 +14,10 @@ import SwiftData
 class Source {
     
     var name: String
+    
+    @Relationship(inverse: \Definition.source)
     var definitions: [Definition] = []
+    
     let uuid = UUID()
     
     init(name: String) {
@@ -40,6 +43,8 @@ class Source {
         }
         
     }
+    
+    
     
     
 }
