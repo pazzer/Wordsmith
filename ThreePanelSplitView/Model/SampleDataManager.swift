@@ -17,7 +17,6 @@ class SampleDataManager {
         case noun
         case adverb
         case verb
-        case unknown
     }
     
     private enum ImageResource: String, CaseIterable {
@@ -110,9 +109,10 @@ class SampleDataManager {
                 let definition = Definition(definition: text)
                 context.insert(definition)
                 
-                if let name = wordType?.rawValue,
-                   let wordType = ThreePanelSplitView.WordType.withName(name, in: context) {
-                    definition.wordType = wordType
+                if let name = wordType?.rawValue {
+                   definition.wordType = ThreePanelSplitView.WordType.withName(name, in: context)
+                } else {
+                    definition.wordType = nil
                 }
                 
                 if let name = source?.name,
@@ -196,7 +196,7 @@ class SampleDataManager {
             "retaining wall":
                 [(
                     "a wall designed to hold in place a mass of earth or the like, such as the edge of a terrace or excavation.",
-                    .unknown,
+                    nil,
                     .wikipedia,
                     [.architecture],
                     []

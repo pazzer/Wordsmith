@@ -48,11 +48,14 @@ struct WordDetail: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(definition.definition)
                                         .font(.title3)
-                            
-                                    Text(definition.combinedMetedata)
-                                        .font(.callout)
-                                        .foregroundStyle(.secondary)
+                                    
+                                    if let metadata = definition.combinedMetedata {
+                                        Text(metadata)
+                                            .font(.callout)
+                                            .foregroundStyle(.secondary)
+                                        }
                                     }
+                                    
                                 Spacer()
                                 
                                 if !definition.images.isEmpty {

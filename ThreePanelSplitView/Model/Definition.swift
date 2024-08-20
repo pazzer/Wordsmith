@@ -34,9 +34,19 @@ class Definition {
         self.dateCreated = .now
     }
     
-    var combinedMetedata: String {
-        let source = source?.name ?? "anon"
-        let type = wordType?.name ?? "type unknown"
-        return [source, type].joined(separator: ", ")
+    var combinedMetedata: String? {
+        var components = [String]()
+        
+        if let source = source?.name {
+            components.append(source)
+        }
+        
+        if let type = wordType?.name {
+            components.append(type)
+        }
+        
+        let metadata = components.joined(separator: ", ")
+        
+        return metadata.isEmpty ? nil : metadata
     }
 }

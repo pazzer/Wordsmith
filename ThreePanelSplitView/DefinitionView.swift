@@ -23,52 +23,95 @@ struct DefinitionView: View {
     
     @State var imageDropPossible = false
     
+    @Query(sort: \WordType.name, order: .forward)
+    var wordTypes: [WordType]
+    
+    @Query(sort: \Source.name, order: .forward)
+    var sources: [Source]
+    
+    
+    init(definition: Definition) {
+        self.definition = definition
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             WordBanner(word: definition.word)
             TextField("Definition", text: $definition.definition, axis: .vertical)
                 .font(.title3)
                 .textFieldStyle(.plain)
+                .padding([.horizontal, .top])
+            
+            Divider()
                 .padding()
             
-            
-            LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                ForEach($definition.images, id: \.uuid) { $image in
-                    if let nsImage = image.image {
-                        SwiftUI.Image(nsImage: nsImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 148, height: 148)
+            VStack(alignment: .leading, spacing: 16) {
+                
+                SwiftUI.Group {
+                    Picker("Word Type", selection: $definition.wordType) {
+                        ForEach(wordTypes, id: \.uuid) {
+                            Text($0.name)
+                                .tag(Optional($0))
+                        }
+                        Divider()
+                        Text("Not applicable/unknown")
+                            .tag(nil as WordType?)
                     }
-                }
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(imageDropPossible ? Color.green : Color(white: 0.85))
-                    .overlay {
-                        SwiftUI.Image(systemName: "photo")
-                            .font(.largeTitle)
-                            .foregroundStyle(.secondary)
+                    Picker("Source", selection: $definition.source) {
+                        ForEach(sources, id: \.uuid) {
+                            Text($0.name)
+                                .tag(Optional($0))
+                        }
+                        Divider()
+                        Text("Not applicable/unknown")
+                            .tag(nil as Source?)
                         
                     }
-                    .frame(width: 148, height: 148)
-                    .dropDestination(for: Data.self) { items, location in
-                        if let data = items.first, let image = NSImage(data: data) {
-                            addImage(image)
-                        }
-                        return false
-                    } isTargeted: { imageDropPossible = $0 }
+                }
+                .pickerStyle(.menu)
+                .fixedSize()
+                .labelsHidden()
+                .padding(.horizontal)
 
+                Divider()
+                    .padding(.horizontal)
                     
+                    
+                
+                
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
+                    ForEach($definition.images, id: \.uuid) { $image in
+                        if let nsImage = image.image {
+                            SwiftUI.Image(nsImage: nsImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 148, height: 148)
+                        }
+                    }
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(imageDropPossible ? Color.green : Color(white: 0.85))
+                        .overlay {
+                            SwiftUI.Image(systemName: "photo")
+                                .font(.largeTitle)
+                                .foregroundStyle(.secondary)
+                            
+                        }
+                        .frame(width: 148, height: 148)
+                        .dropDestination(for: Data.self) { items, location in
+                            if let data = items.first, let image = NSImage(data: data) {
+                                addImage(image)
+                            }
+                            return false
+                        } isTargeted: { imageDropPossible = $0 }
+                    
+                    
+                }
+                .padding()
+                . contentMargins(.horizontal, 20.0, for: .scrollContent)
+                Spacer()
+                
             }
-            .padding()
-            . contentMargins(.horizontal, 20.0, for: .scrollContent)
-            Spacer()
-            
         }
-//            .inspector(isPresented: /*@START_MENU_TOKEN@*/.constant(true)/*@END_MENU_TOKEN@*/) {
-//                Color.cyan
-//                    .inspectorColumnWidth(min: 220, ideal: 220, max: 275)
-//                   
-//            }
             
     }
     
