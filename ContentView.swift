@@ -11,9 +11,12 @@ import SwiftData
 
 struct ContentView: View {
     
+    @Environment(\.modelContext) private var context
+    
     @State var selectedSidebarItem: Sidebar.Item? = nil
     @State var selectedWord: Word? = nil
     @State var selectedSource: Source? = nil
+    @State var selectedGroup: Group? = nil
     
     var body: some View {
         NavigationSplitView {
@@ -26,7 +29,7 @@ struct ContentView: View {
                 case .sources:
                     SourcesList(selectedSource: $selectedSource)
                 case .groups:
-                    Text("Not Implemented")
+                    GroupsList(selection: $selectedGroup)
                 }
                 
             }
@@ -42,10 +45,12 @@ struct ContentView: View {
                         SourceDetail(source: selectedSource)
                     }
                 case .groups:
-                    Text("Not Implemented")
+                    if let selectedGroup = selectedGroup {
+                        GroupDetail(group: selectedGroup)
+                    }
                 }
             } else {
-                ContentUnavailableView("No Selection", image: "exclamationmark")
+                ContentUnavailableView("No Selection", systemImage: "exclamationmark")
             }
             
         }
@@ -55,6 +60,8 @@ struct ContentView: View {
     
     
 }
+
+
 
 
 #Preview {

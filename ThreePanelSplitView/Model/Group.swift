@@ -8,15 +8,18 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import Combine
 
 @Model
-class Group {
+final public class Group: UUIDAble, StringCreatable, StringFetchable {
     var name: String
     var summary: String?
-    let id = UUID()
+    let uuid = UUID()
     
     @Relationship(deleteRule: .nullify, inverse: \Definition.groups)
     var definitions: [Definition] = []
+    
+    
     
     init(name: String, summary: String? = nil) {
         self.name = name
@@ -25,6 +28,15 @@ class Group {
     
     var wordCount: Int {
         Set(definitions.compactMap({$0.word?.word})).count
+    }
+    
+    func remove(_ definition: Definition) {
+        definitions.removeAll { $0.uuid == definition.uuid }
+    }
+    
+    func add(_ definition: Definition) {
+        guard !definition.isMember(of: self) else { return }
+        definitions.append(definition)
     }
     
     static func withName(_ name: String, in modelContext: ModelContext, create: Bool = false) -> Group? {
@@ -45,6 +57,31 @@ class Group {
             return nil
         }
         
+    }
+    
+    
+    static func create(from string: String, in modelContext: ModelContext) -> Group? {
+        let fetchDescriptor = FetchDescriptor<Group>(predicate: #Predicate { group in
+            group.name == string
+        })
+        
+        do {
+            let groups = try modelContext.fetch(fetchDescriptor)
+            precondition(groups.isEmpty)
+            let group = Group(name: string)
+            modelContext.insert(group)
+            return group
+        } catch {
+            return nil
+        }
+    }
+    
+    static func fetch(from string: String, in modelContext: ModelContext) -> Group? {
+        let fetchDescriptor = FetchDescriptor<Group>(predicate: #Predicate { group in
+            group.name == string
+        })
+        
+        return try? modelContext.fetch(fetchDescriptor).first
     }
 }
 

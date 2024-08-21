@@ -15,10 +15,7 @@ struct WordDetail: View {
     @Binding var selectedDefinition: Definition?
     @Environment(\.modelContext) private var context
     
-    var sortedDefinitions: [Definition] {
-        word.definitions.sorted { $0.dateCreated > $1.dateCreated }
-    }
-    
+
     
     @Query(sort: \Definition.dateCreated, order: .reverse)
     var definitions: [Definition]
@@ -103,7 +100,6 @@ struct WordDetail: View {
                             
                     }
                 }
-//                .background(.quinary)
             }
         }
     }

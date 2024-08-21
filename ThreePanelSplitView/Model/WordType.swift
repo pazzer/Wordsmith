@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class WordType: Nameable, CustomDebugStringConvertible {
+class WordType: CustomDebugStringConvertible {
  
     var name: String
     

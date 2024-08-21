@@ -62,9 +62,6 @@ struct SourcesList: View {
         })
         .navigationTitle("Words")
     }
-    
-    
-    
 }
 
 

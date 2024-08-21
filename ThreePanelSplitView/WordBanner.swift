@@ -22,5 +22,24 @@ struct WordBanner: View {
         }
         .background(.white)
     }
+}
+
+struct TitleView: View {
+    
+    // In the event of crashes revert to using `@Bindable` a la `WordBanner`.
+    @Binding var title: String
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            TextField("", text: $title)
+                .textFieldStyle(.plain)
+                .font(.largeTitle.bold())
+                .padding()
+            Spacer()
+        }
+        .background(.white)
+    }
+    
+    
     
 }

@@ -49,4 +49,32 @@ class Definition {
         
         return metadata.isEmpty ? nil : metadata
     }
+    
+    func isMember(of group: Group) -> Bool {
+        groups.first(where: { $0.uuid == group.uuid }) != nil
+    }
+    
+    static func all(in context: ModelContext) -> [Definition] {
+        let fetchDescriptor = FetchDescriptor<Definition>()
+        do {
+            let results = try context.fetch(fetchDescriptor)
+            return results
+        } catch {
+            return []
+        }
+    }
+    
+
+    
+    static func withUUID(_ uuid: UUID, context: ModelContext) -> Definition {
+        let fetchDescriptor = FetchDescriptor<Definition>(predicate: #Predicate { definition in
+            definition.uuid == uuid
+        })
+        
+        guard let definition = try? context.fetch(fetchDescriptor).first else {
+            preconditionFailure()
+        }
+        return definition 
+    }
+    
 }

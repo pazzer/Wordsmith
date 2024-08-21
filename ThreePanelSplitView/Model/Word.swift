@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final public class Word: CustomDebugStringConvertible {
+final public class Word: CustomDebugStringConvertible, StringCreatable {
     
     enum ValidationError: LocalizedError {
         case isDuplicate
@@ -90,6 +90,30 @@ final public class Word: CustomDebugStringConvertible {
         } catch {
             return nil
         }
+
+    }
+    
+    static func create(from string: String, in modelContext: ModelContext) -> Word? {
+        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
+            word.word == string
+        })
         
+        do {
+            let words = try modelContext.fetch(fetchDescriptor)
+            precondition(words.isEmpty)
+            let word = Word(word: string)
+            modelContext.insert(word)
+            return word
+        } catch {
+            return nil
+        }
+    }
+    
+    static func fetchFromString(_ string: String, in modelContext: ModelContext) -> Word? {
+        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
+            word.word == string
+        })
+        
+        return try? modelContext.fetch(fetchDescriptor).first
     }
 }
