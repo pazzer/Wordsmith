@@ -50,7 +50,7 @@ struct ContentView: View {
                     }
                 }
             } else {
-                ContentUnavailableView("No Selection", systemImage: "exclamationmark")
+                ContentUnavailableView("No Selection", systemImage: "sidebar.left")
             }
             
         }
