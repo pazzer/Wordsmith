@@ -90,8 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				CFD1D2392C74AC8B0023BA90 /* Next.md */,
-				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
-				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
 				CF9D9F202C62B33E00C53503 /* Wordsmith */,
 				CF9D9F1F2C62B33E00C53503 /* Products */,
 			);
@@ -108,6 +106,8 @@
 		CF9D9F202C62B33E00C53503 /* Wordsmith */ = {
 			isa = PBXGroup;
 			children = (
+				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
+				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
 				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
 				CFD1D24C2C75E48A0023BA90 /* DefinitionsPicker.swift */,
