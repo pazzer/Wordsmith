@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF9D9F222C62B33E00C53503 /* ThreePanelSplitViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F212C62B33E00C53503 /* ThreePanelSplitViewApp.swift */; };
+		CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */; };
 		CF9D9F242C62B33E00C53503 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F232C62B33E00C53503 /* ContentView.swift */; };
 		CF9D9F282C62B34200C53503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9D9F272C62B34200C53503 /* Assets.xcassets */; };
 		CF9D9F2C2C62B34200C53503 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9D9F2B2C62B34200C53503 /* Preview Assets.xcassets */; };
@@ -40,11 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CF9D9F1E2C62B33E00C53503 /* ThreePanelSplitView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreePanelSplitView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF9D9F212C62B33E00C53503 /* ThreePanelSplitViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreePanelSplitViewApp.swift; sourceTree = "<group>"; };
+		CF9D9F1E2C62B33E00C53503 /* Wordsmith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordsmith.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsmithApp.swift; sourceTree = "<group>"; };
 		CF9D9F232C62B33E00C53503 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF9D9F272C62B34200C53503 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CF9D9F292C62B34200C53503 /* ThreePanelSplitView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThreePanelSplitView.entitlements; sourceTree = "<group>"; };
+		CF9D9F292C62B34200C53503 /* Wordsmith.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wordsmith.entitlements; sourceTree = "<group>"; };
 		CF9D9F2B2C62B34200C53503 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF9D9F322C62B36400C53503 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CF9D9F332C62B36500C53503 /* WordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordType.swift; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				CFD1D2392C74AC8B0023BA90 /* Next.md */,
-				CF9D9F212C62B33E00C53503 /* ThreePanelSplitViewApp.swift */,
+				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
 				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
-				CF9D9F202C62B33E00C53503 /* ThreePanelSplitView */,
+				CF9D9F202C62B33E00C53503 /* Wordsmith */,
 				CF9D9F1F2C62B33E00C53503 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,12 +100,12 @@
 		CF9D9F1F2C62B33E00C53503 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF9D9F1E2C62B33E00C53503 /* ThreePanelSplitView.app */,
+				CF9D9F1E2C62B33E00C53503 /* Wordsmith.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CF9D9F202C62B33E00C53503 /* ThreePanelSplitView */ = {
+		CF9D9F202C62B33E00C53503 /* Wordsmith */ = {
 			isa = PBXGroup;
 			children = (
 				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
@@ -127,11 +127,11 @@
 				CFD1D24E2C765CC90023BA90 /* NewItemSheet.swift */,
 				CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */,
 				CF9D9F272C62B34200C53503 /* Assets.xcassets */,
-				CF9D9F292C62B34200C53503 /* ThreePanelSplitView.entitlements */,
+				CF9D9F292C62B34200C53503 /* Wordsmith.entitlements */,
 				CF9D9F402C62B36F00C53503 /* Model */,
 				CF9D9F2A2C62B34200C53503 /* Preview Content */,
 			);
-			path = ThreePanelSplitView;
+			path = Wordsmith;
 			sourceTree = "<group>";
 		};
 		CF9D9F2A2C62B34200C53503 /* Preview Content */ = {
@@ -160,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CF9D9F1D2C62B33E00C53503 /* ThreePanelSplitView */ = {
+		CF9D9F1D2C62B33E00C53503 /* Wordsmith */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF9D9F2F2C62B34200C53503 /* Build configuration list for PBXNativeTarget "ThreePanelSplitView" */;
+			buildConfigurationList = CF9D9F2F2C62B34200C53503 /* Build configuration list for PBXNativeTarget "Wordsmith" */;
 			buildPhases = (
 				CF9D9F1A2C62B33E00C53503 /* Sources */,
 				CF9D9F1B2C62B33E00C53503 /* Frameworks */,
@@ -172,9 +172,9 @@
 			);
 			dependencies = (
 			);
-			name = ThreePanelSplitView;
+			name = Wordsmith;
 			productName = ThreePanelSplitView;
-			productReference = CF9D9F1E2C62B33E00C53503 /* ThreePanelSplitView.app */;
+			productReference = CF9D9F1E2C62B33E00C53503 /* Wordsmith.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CF9D9F192C62B33E00C53503 /* Build configuration list for PBXProject "ThreePanelSplitView" */;
+			buildConfigurationList = CF9D9F192C62B33E00C53503 /* Build configuration list for PBXProject "Wordsmith" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CF9D9F1D2C62B33E00C53503 /* ThreePanelSplitView */,
+				CF9D9F1D2C62B33E00C53503 /* Wordsmith */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +249,7 @@
 				CFAE90D92C6404E8001DE67A /* Image.swift in Sources */,
 				CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */,
 				CF9D9F3F2C62B36700C53503 /* Nameable.swift in Sources */,
-				CF9D9F222C62B33E00C53503 /* ThreePanelSplitViewApp.swift in Sources */,
+				CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */,
 				CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */,
 				CFD1D2492C7517660023BA90 /* ContentList.swift in Sources */,
 				CF9D9F422C62B3E300C53503 /* Sidebar.swift in Sources */,
@@ -380,11 +380,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ThreePanelSplitView/ThreePanelSplitView.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ThreePanelSplitView/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
 				DEVELOPMENT_TEAM = RLT3Y7VWF4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -404,7 +404,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.ThreePanelSplitView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -419,11 +419,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ThreePanelSplitView/ThreePanelSplitView.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ThreePanelSplitView/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
 				DEVELOPMENT_TEAM = RLT3Y7VWF4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -443,7 +443,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.ThreePanelSplitView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -456,7 +456,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CF9D9F192C62B33E00C53503 /* Build configuration list for PBXProject "ThreePanelSplitView" */ = {
+		CF9D9F192C62B33E00C53503 /* Build configuration list for PBXProject "Wordsmith" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF9D9F2D2C62B34200C53503 /* Debug */,
@@ -465,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CF9D9F2F2C62B34200C53503 /* Build configuration list for PBXNativeTarget "ThreePanelSplitView" */ = {
+		CF9D9F2F2C62B34200C53503 /* Build configuration list for PBXNativeTarget "Wordsmith" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF9D9F302C62B34200C53503 /* Debug */,

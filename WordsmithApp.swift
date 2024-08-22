@@ -1,6 +1,6 @@
 //
-//  ThreePanelSplitViewApp.swift
-//  ThreePanelSplitView
+// WordsmithApp.swift
+// Wordsmith
 //
 //  Created by Paul Patterson on 06/08/2024.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct ThreePanelSplitViewApp: App {
+struct WordsmithApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Word.self,

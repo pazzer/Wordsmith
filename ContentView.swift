@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  ThreePanelSplitView
+// Wordsmith
 //
 //  Created by Paul Patterson on 06/08/2024.
 //

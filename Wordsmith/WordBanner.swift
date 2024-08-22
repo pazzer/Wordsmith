@@ -1,6 +1,6 @@
 //
 //  WordBanner.swift
-//  ThreePanelSplitView
+// Wordsmith
 //
 //  Created by Paul Patterson on 09/08/2024.
 //

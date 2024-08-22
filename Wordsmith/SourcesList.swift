@@ -1,6 +1,6 @@
 //
 //  SourceList.swift
-//  ThreePanelSplitView
+// Wordsmith
 //
 //  Created by Paul Patterson on 20/08/2024.
 //

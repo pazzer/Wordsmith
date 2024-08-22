@@ -1,6 +1,6 @@
 //
 //  NewItemSheet.swift
-//  ThreePanelSplitView
+// Wordsmith
 //
 //  Created by Paul Patterson on 21/08/2024.
 //

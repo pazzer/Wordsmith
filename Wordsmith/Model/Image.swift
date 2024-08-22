@@ -1,6 +1,6 @@
 //
 //  Image.swift
-//  ThreePanelSplitView
+// Wordsmith
 //
 //  Created by Paul Patterson on 07/08/2024.
 //

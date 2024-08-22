@@ -1,6 +1,6 @@
 //
-//  GroupRow.swift
-//  ThreePanelSplitView
+//  SourceRow.swift
+// Wordsmith
 //
 //  Created by Paul Patterson on 20/08/2024.
 //
@@ -9,18 +9,17 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-struct GroupRow: View {
+struct SourceRow: View {
     
-    @Bindable var group: Group
+    @Bindable var source: Source
     
     var body: some View {
         HStack {
-            Text(group.name)
+            Text(source.name)
             Spacer()
-            Text("\($group.definitions.count)")
+            Text("\(source.definitions.count)")
                 .foregroundStyle(.secondary)
         }
     }
-    
 }
 

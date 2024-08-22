@@ -8,7 +8,7 @@
 import SwiftData
 import AppKit.NSImage
 
-typealias SDImage = ThreePanelSplitView.Image
+typealias SDImage = Wordsmith.Image
 
 class SampleDataManager {
     
@@ -80,7 +80,7 @@ class SampleDataManager {
 
     private static func loadWordTypes(into context: ModelContext) {
         WordType.allCases.forEach {
-            context.insert( ThreePanelSplitView.WordType(name: $0.rawValue ))
+            context.insert( Wordsmith.WordType(name: $0.rawValue ))
         }
     }
     
@@ -92,7 +92,7 @@ class SampleDataManager {
     
     private static func loadGroups(into context: ModelContext) {
         Group.allCases.forEach {
-            context.insert( ThreePanelSplitView.Group(name: $0.name) )
+            context.insert( Wordsmith.Group(name: $0.name) )
         }
     }
 
@@ -110,7 +110,7 @@ class SampleDataManager {
                 context.insert(definition)
                 
                 if let name = wordType?.rawValue {
-                   definition.wordType = ThreePanelSplitView.WordType.withName(name, in: context)
+                   definition.wordType = Wordsmith.WordType.withName(name, in: context)
                 } else {
                     definition.wordType = nil
                 }
@@ -121,7 +121,7 @@ class SampleDataManager {
                 }
                 
                 groups
-                    .compactMap {  ThreePanelSplitView.Group.withName($0.name, in: context) }
+                    .compactMap {  Wordsmith.Group.withName($0.name, in: context) }
                     .forEach { definition.groups.append($0) }
                 
                 images
