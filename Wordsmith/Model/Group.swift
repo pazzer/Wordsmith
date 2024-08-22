@@ -1,6 +1,6 @@
 //
 //  Group.swift
-//  CrossWords
+//  Wordsmith
 //
 //  Created by Paul Patterson on 03/08/2024.
 //
@@ -11,7 +11,8 @@ import SwiftUI
 import Combine
 
 @Model
-final public class Group: UUIDAble, StringCreatable, StringFetchable {
+final public class Group: UUIDAble, StringIdentifiable {
+    
     var name: String
     var summary: String?
     let uuid = UUID()
@@ -39,39 +40,21 @@ final public class Group: UUIDAble, StringCreatable, StringFetchable {
         definitions.append(definition)
     }
     
-    static func withName(_ name: String, in modelContext: ModelContext, create: Bool = false) -> Group? {
-        let fetchDescriptor = FetchDescriptor<Group>(predicate: #Predicate { source in
-            source.name == name
-        })
         
-        do {
-            let sources = try modelContext.fetch(fetchDescriptor)
-            if sources.isEmpty && create {
-                let group = Group(name: name)
-                modelContext.insert(group)
-                return group
-            } else {
-                return sources.first
-            }
-        } catch {
-            return nil
-        }
-        
-    }
+}
+
+/// StringIdentifiable conformace
+/// When predicates support key-paths this can become an extension on PersistentModel.
+extension Group {
     
-    
-    static func create(from string: String, in modelContext: ModelContext) -> Group? {
-        let fetchDescriptor = FetchDescriptor<Group>(predicate: #Predicate { group in
-            group.name == string
-        })
-        
-        do {
-            let groups = try modelContext.fetch(fetchDescriptor)
-            precondition(groups.isEmpty)
+    static func find(_ string: String, in modelContext: ModelContext, create: Bool = false) -> Group? {
+        if let group = Group.fetch(from: string, in: modelContext) {
+            return group
+        } else if create {
             let group = Group(name: string)
             modelContext.insert(group)
             return group
-        } catch {
+        } else {
             return nil
         }
     }
@@ -80,8 +63,27 @@ final public class Group: UUIDAble, StringCreatable, StringFetchable {
         let fetchDescriptor = FetchDescriptor<Group>(predicate: #Predicate { group in
             group.name == string
         })
-        
-        return try? modelContext.fetch(fetchDescriptor).first
+        do {
+            let results = try modelContext.fetch(fetchDescriptor)
+            precondition(results.count < 2)
+            return results.first
+        } catch {
+            preconditionFailure()
+        }
     }
+    
+    static func create(from string: String, in modelContext: ModelContext) -> Group {
+        guard Self.fetch(from: string, in: modelContext) == nil else {
+            preconditionFailure("'\(string)' already exists.")
+        }
+        let word = Group(name: string)
+        modelContext.insert(word)
+        return word
+    }
+    
+    static var stringIdentifiableKeyPath: KeyPath<Group, String> {
+        \Group.name
+    }
+
 }
 

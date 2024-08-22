@@ -15,7 +15,7 @@ import UIKit.UIImage
 #endif
 
 @Model
-class Image {
+final class Image: UUIDAble {
     
     var data: Data? = nil
     var uuid = UUID()
@@ -69,18 +69,7 @@ class Image {
     
     
     
-    static func withUUID(_ uuid: UUID, in context: ModelContext) -> Image? {
-        let fetchDescriptor = FetchDescriptor<Image>(predicate: #Predicate { image in
-            image.uuid == uuid
-        })
-        
-        do {
-            let images = try context.fetch(fetchDescriptor)
-            assert(images.count < 2)
-            return images.first
-        } catch {
-            return nil
-        }
-    }
+    
+    
 }
 

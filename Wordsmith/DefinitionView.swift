@@ -166,7 +166,7 @@ struct DefinitionView: View {
         let container = try ModelContainer(for: schema, configurations: config)
         
         SampleDataManager.loadSampleData(into: container.mainContext)
-        let word = Word.withName("arabesque", in: container.mainContext)!
+        let word = Word.find("arabesque", in: container.mainContext)!
         let definition = word.definitions.first(where: { $0.definition.contains("intertwined") } )
         
         return Preview(definition: definition!)

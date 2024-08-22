@@ -58,7 +58,7 @@ struct NewSourceSheet: View {
         }
         .onDisappear(perform: {
             DispatchQueue.main.async {
-                selectedSource = Source.withName(source, in: modelContext)
+                selectedSource = Source.find(source, in: modelContext)
             }
         })
         .padding()

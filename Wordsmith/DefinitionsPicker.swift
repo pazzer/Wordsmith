@@ -103,7 +103,7 @@ struct DefinitionsPicker: View {
         
         SampleDataManager.loadSampleData(into: container.mainContext)
         
-        let architecture = Group.withName("Architecture", in: container.mainContext)!
+        let architecture = Group.find("Architecture", in: container.mainContext, create: false)!
         
         return Preview(group: architecture)
             .modelContainer(container)

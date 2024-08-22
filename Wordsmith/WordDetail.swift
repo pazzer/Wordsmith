@@ -146,7 +146,7 @@ struct WordDetail: View {
         
         SampleDataManager.loadSampleData(into: container.mainContext)
         
-        return Preview(word: Word.withName("arabesque", in: container.mainContext)!)
+        return Preview(word: Word.find("arabesque", in: container.mainContext)!)
             .modelContainer(container)
         
     } catch {

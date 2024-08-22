@@ -1,6 +1,6 @@
 //
 //  LoadSampleData.swift
-//  CrossWords
+//  Wordsmith
 //
 //  Created by Paul Patterson on 03/08/2024.
 //
@@ -119,23 +119,20 @@ class SampleDataManager {
                     definition.wordType = nil
                 }
                 
-                if let name = source?.name,
-                   let source = Source.withName(name, in: context) {
+                if let name = source?.name {
+                    let source = Source.find(name, in: context)
                     definition.source = source
                 }
                 
                 groups
-                    .compactMap {  Wordsmith.Group.withName($0.name, in: context) }
+                    .compactMap {  Wordsmith.Group.find($0.name, in: context) }
                     .forEach { definition.groups.append($0) }
                 
                 images
                     .forEach { imageResource in
                         if let uuid = imagesMap[imageResource] {
-                            if let image = Image.withUUID(uuid, in: context) {
-                                definition.images.append(image)
-                            } else {
-                                print("failed to fetch image with id \(uuid.uuidString)")
-                            }
+                            let image = Image.withUUID(uuid, in: context)
+                            definition.images.append(image)
                         } else {
                             let image: Image
                             #if os(macOS)

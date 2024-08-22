@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct NewItemSheet<Model: PersistentModel & UUIDAble & StringCreatable & StringFetchable>: View {
+struct NewItemSheet<Model: PersistentModel & UUIDAble & StringIdentifiable>: View {
     
     @State var candidateValue: String = ""
     
@@ -46,9 +46,8 @@ struct NewItemSheet<Model: PersistentModel & UUIDAble & StringCreatable & String
                 Spacer()
                 
                 Button("Add", role: .none) {
-                    if let item = Model.create(from: candidateValue, in: modelContext) {
-                        modelContext.insert(item)
-                    }
+                    let item = Model.create(from: candidateValue, in: modelContext)
+                    modelContext.insert(item)
                     isPresented = false
                 }
                 .disabled(invalidCandidateValue)

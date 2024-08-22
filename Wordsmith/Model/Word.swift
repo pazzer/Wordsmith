@@ -1,6 +1,6 @@
 //
 //  Word.swift
-//  CrossWords
+//  Wordsmith
 //
 //  Created by Paul Patterson on 03/08/2024.
 //
@@ -8,8 +8,18 @@
 import Foundation
 import SwiftData
 
+
+protocol StringIdentifiable: PersistentModel {
+    static func find(_ string: String, in modelContext: ModelContext, create: Bool) -> Self?
+    static func fetch(from string: String, in modelContext: ModelContext) -> Self?
+    static func create(from string: String, in modelContext: ModelContext) -> Self
+    static var stringIdentifiableKeyPath: KeyPath<Self, String> { get }
+}
+
+
 @Model
-final public class Word: CustomDebugStringConvertible, StringCreatable {
+final public class Word: CustomDebugStringConvertible, StringIdentifiable {
+    
     
     enum ValidationError: LocalizedError {
         case isDuplicate
@@ -73,72 +83,59 @@ final public class Word: CustomDebugStringConvertible, StringCreatable {
             .first
     }
     
-    static func withName(_ name: String, in modelContext: ModelContext, create: Bool = false) -> Word? {
-        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
-            word.word == name
-        })
-        
-        do {
-            let words = try modelContext.fetch(fetchDescriptor)
-            if words.isEmpty && create {
-                let word = Word(word: name)
-                modelContext.insert(word)
-                return word
-            } else {
-                return words.first
-            }
-        } catch {
-            return nil
-        }
+    
+    
 
+}
+
+/// StringIdentifiable conformace
+/// When predicates support key-paths this can become an extension on PersistentModel.
+extension Word {
+    
+    static var stringIdentifiableKeyPath: KeyPath<Word, String> {
+        \Word.word
     }
     
-    static func create(from string: String, in modelContext: ModelContext) -> Word? {
-        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
-            word.word == string
-        })
-        
-        do {
-            let words = try modelContext.fetch(fetchDescriptor)
-            precondition(words.isEmpty)
+    static func find(_ string: String, in modelContext: ModelContext, create: Bool = false) -> Word? {
+        if let word = Word.fetch(from: string, in: modelContext) {
+            return word
+        } else if create {
             let word = Word(word: string)
             modelContext.insert(word)
             return word
-        } catch {
+        } else {
             return nil
         }
     }
     
-    static func fetchFromString(_ string: String, in modelContext: ModelContext) -> Word? {
-        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
+    static func fetch(from string: String, in modelContext: ModelContext) -> Word? {
+        let fetchDescriptor = FetchDescriptor<Self>(predicate: #Predicate { word in
             word.word == string
         })
-        
-        return try? modelContext.fetch(fetchDescriptor).first
-    }
-    
-//    static func all(in context: ModelContext) -> [Word] {
-//        let fetchDescriptor = FetchDescriptor<Word>()
-//        do {
-//            let words = try context.fetch(fetchDescriptor)
-//            return words
-//        } catch {
-//            return []
-//        }
-//    }
-}
-
-
-
-extension PersistentModel {
-    
-    static func all(in context: ModelContext) -> [Self] {
-        let fetchDescriptor = FetchDescriptor<Self>()
         do {
-            return try context.fetch(fetchDescriptor)
+            let results = try modelContext.fetch(fetchDescriptor)
+            precondition(results.count < 2)
+            return results.first
         } catch {
-            return []
+            preconditionFailure()
         }
     }
     
+    static func create(from string: String, in modelContext: ModelContext) -> Word {
+        guard Self.fetch(from: string, in: modelContext) == nil else {
+            preconditionFailure("'\(string)' already exists.")
+        }
+        let word = Word(word: string)
+        modelContext.insert(word)
+        return word
+        
+    }
+
+    
 }
+
+
+
+
+
+

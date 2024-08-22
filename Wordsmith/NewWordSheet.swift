@@ -50,7 +50,7 @@ struct NewWordSheet: View {
         }
         .onDisappear(perform: {
             DispatchQueue.main.async {
-                selectedWord = Word.withName(word, in: modelContext)
+                selectedWord = Word.find(word, in: modelContext)
             }
         })
         .onChange(of: word) {

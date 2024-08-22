@@ -13,17 +13,12 @@ protocol UUIDAble {
     var uuid: UUID { get }
 }
 
-protocol StringCreatable {
-    static func create(from string: String, in modelContext: ModelContext) -> Self?
-}
-
-protocol StringFetchable {
-    static func fetch(from string: String, in modelContext: ModelContext) -> Self?
-}
 
 
 
-struct ContentList<Model: PersistentModel & UUIDAble & StringCreatable & StringFetchable, ModelView: View>: View {
+
+
+struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable, ModelView: View>: View {
     
     
     @State private var newItemSheetPresented = false
