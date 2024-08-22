@@ -6,7 +6,11 @@
 //
 
 import SwiftData
+#if os(macOS)
 import AppKit.NSImage
+#else
+import UIKit.UIImage
+#endif
 
 typealias SDImage = Wordsmith.Image
 
@@ -130,11 +134,17 @@ class SampleDataManager {
                             if let image = Image.withUUID(uuid, in: context) {
                                 definition.images.append(image)
                             } else {
-                                NSLog("failed to fetch image with id \(uuid.uuidString)")
+                                print("failed to fetch image with id \(uuid.uuidString)")
                             }
                         } else {
+                            let image: Image
+                            #if os(macOS)
                             let nsImage = NSImage(imageLiteralResourceName: imageResource.rawValue)
-                            let image = Image(image: nsImage)
+                            image = Image(image: nsImage)
+                            #else
+                            let uiImage = UIImage(imageLiteralResourceName: imageResource.rawValue)
+                            image = Image(image: uiImage)
+                            #endif
                             context.insert(image)
                             definition.images.append(image)
                             imagesMap[imageResource] = image.uuid

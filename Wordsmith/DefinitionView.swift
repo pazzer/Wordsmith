@@ -7,7 +7,11 @@
 
 import SwiftUI
 import SwiftData
-
+#if os(macOS)
+import AppKit.NSImage
+#elseif os(iOS)
+import UIKit.UIImage
+#endif
 
 
 struct DefinitionView: View {
@@ -81,12 +85,21 @@ struct DefinitionView: View {
                     ZStack {
                         LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                             ForEach($definition.images, id: \.uuid) { $image in
+                                #if os(macOS)
                                 if let nsImage = image.image {
                                     SwiftUI.Image(nsImage: nsImage)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 148, height: 148)
                                 }
+                                #elseif os(iOS)
+                                if let uiImage = image.image {
+                                    SwiftUI.Image(uiImage: uiImage)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 148, height: 148)
+                                }
+                                #endif
                             }
                         }
                         .padding()
@@ -100,12 +113,14 @@ struct DefinitionView: View {
                     
                     
                 }
+                #if os(macOS)
                 .dropDestination(for: Data.self) { items, location in
                     if let data = items.first, let image = NSImage(data: data) {
                         addImage(image)
                     }
                     return false
                 } isTargeted: { imageDropPossible = $0 }
+                #endif
                 
                 
                 
@@ -116,15 +131,15 @@ struct DefinitionView: View {
             
     }
     
+    #if os(macOS)
     func addImage(_ nsImage: NSImage) {
         let image = SDImage(image: nsImage)
         withAnimation {
             context.insert(image)
             definition.images.append(image)
         }
-        
     }
-    
+    #endif
     
 }
 
