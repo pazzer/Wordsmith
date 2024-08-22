@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct DefinitionSelector: View {
+struct DefinitionsPicker: View {
     
     @Environment(\.modelContext) private var context
     
@@ -43,36 +43,36 @@ struct DefinitionSelector: View {
 
 
 
-//#Preview {
-//    
-//    struct Preview: View {
-//        
-//        @State var group: Group
-//        
-//        var body: some View {
-//            DefinitionSelector(group: group)
-//        }
-//    }
-//    
-//    do {
-//        
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let schema = Schema([
-//            Word.self,
-//        ])
-//        
-//        
-//        let container = try ModelContainer(for: schema, configurations: config)
-//        
-//        SampleDataManager.loadSampleData(into: container.mainContext)
-//        
-//        let architecture = Group.withName("Architecture", in: container.mainContext)!
-//        
-//        
-//        return Preview(group: architecture)
-//            .modelContainer(container)
-//        
-//    } catch {
-//        fatalError("Failed to create model container.")
-//    }
-//}
+#Preview {
+    
+    struct Preview: View {
+        
+        @State var group: Group
+        
+        var body: some View {
+            DefinitionsPicker(group: group)
+        }
+    }
+    
+    do {
+        
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let schema = Schema([
+            Word.self,
+        ])
+        
+        
+        let container = try ModelContainer(for: schema, configurations: config)
+        
+        SampleDataManager.loadSampleData(into: container.mainContext)
+        
+        let architecture = Group.withName("Architecture", in: container.mainContext)!
+        
+        
+        return Preview(group: architecture)
+            .modelContainer(container)
+        
+    } catch {
+        fatalError("Failed to create model container.")
+    }
+}

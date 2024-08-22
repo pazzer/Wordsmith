@@ -34,7 +34,7 @@
 		CFD1D2452C7516B00023BA90 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2442C7516B00023BA90 /* GroupRow.swift */; };
 		CFD1D2492C7517660023BA90 /* ContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2482C7517660023BA90 /* ContentList.swift */; };
 		CFD1D24B2C75D04D0023BA90 /* GroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D24A2C75D04D0023BA90 /* GroupDetail.swift */; };
-		CFD1D24D2C75E48A0023BA90 /* DefinitionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D24C2C75E48A0023BA90 /* DefinitionSelector.swift */; };
+		CFD1D24D2C75E48A0023BA90 /* DefinitionsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D24C2C75E48A0023BA90 /* DefinitionsPicker.swift */; };
 		CFD1D24F2C765CC90023BA90 /* NewItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D24E2C765CC90023BA90 /* NewItemSheet.swift */; };
 		CFD1D2512C765D8E0023BA90 /* GroupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2502C765D8E0023BA90 /* GroupsList.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +70,7 @@
 		CFD1D2442C7516B00023BA90 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
 		CFD1D2482C7517660023BA90 /* ContentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentList.swift; sourceTree = "<group>"; };
 		CFD1D24A2C75D04D0023BA90 /* GroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetail.swift; sourceTree = "<group>"; };
-		CFD1D24C2C75E48A0023BA90 /* DefinitionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionSelector.swift; sourceTree = "<group>"; };
+		CFD1D24C2C75E48A0023BA90 /* DefinitionsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionsPicker.swift; sourceTree = "<group>"; };
 		CFD1D24E2C765CC90023BA90 /* NewItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemSheet.swift; sourceTree = "<group>"; };
 		CFD1D2502C765D8E0023BA90 /* GroupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +110,7 @@
 			children = (
 				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
-				CFD1D24C2C75E48A0023BA90 /* DefinitionSelector.swift */,
+				CFD1D24C2C75E48A0023BA90 /* DefinitionsPicker.swift */,
 				CFD1D24A2C75D04D0023BA90 /* GroupDetail.swift */,
 				CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */,
 				CF9D9F492C62BDB800C53503 /* WordDetail.swift */,
@@ -235,7 +235,7 @@
 				CF9D9F462C62BB6A00C53503 /* WordsList.swift in Sources */,
 				CFAE90DD2C6680D0001DE67A /* WordBanner.swift in Sources */,
 				CFD1D23B2C74AE3B0023BA90 /* SourcesList.swift in Sources */,
-				CFD1D24D2C75E48A0023BA90 /* DefinitionSelector.swift in Sources */,
+				CFD1D24D2C75E48A0023BA90 /* DefinitionsPicker.swift in Sources */,
 				CF9D9F4C2C62C48100C53503 /* NewWordSheet.swift in Sources */,
 				CF9D9F3E2C62B36700C53503 /* Definition.swift in Sources */,
 				CF9D9F442C62B6C900C53503 /* SidebarRow.swift in Sources */,

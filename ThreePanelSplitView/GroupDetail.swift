@@ -35,7 +35,7 @@ struct GroupDetail: View {
             
         }
         .inspector(isPresented: $presented) {
-            DefinitionSelector(group: group)
+            DefinitionsPicker(group: group)
         }
     }
 }
