@@ -16,6 +16,8 @@ struct GroupDetail: View {
     @Environment(\.modelContext) private var context
     
     @State var presented = true
+
+    
     
     var sortedDefinitions: [Definition] {
         group.definitions.sorted { $0.word.word < $1.word.word }
@@ -35,7 +37,35 @@ struct GroupDetail: View {
             
         }
         .inspector(isPresented: $presented) {
+//            let viewModel = DefinitionsPickerViewModel(context: context)
             DefinitionsPicker(group: group)
+        }
+    }
+}
+
+
+@Observable
+class DefinitionsPickerViewModel {
+    
+    var expanded = Set<UUID>()
+    
+    func expand(_ word: Word) {
+        expanded.insert(word.uuid)
+    }
+    
+    func collapse(_ word: Word) {
+        expanded.remove(word.uuid)
+    }
+    
+    func isExpanded(_ word: Word) -> Bool {
+        expanded.contains(word.uuid)
+    }
+    
+    func toggle(_ word: Word) {
+        if expanded.contains(word.uuid) {
+            expanded.remove(word.uuid)
+        } else {
+            expanded.insert(word.uuid)
         }
     }
 }

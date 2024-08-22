@@ -116,4 +116,29 @@ final public class Word: CustomDebugStringConvertible, StringCreatable {
         
         return try? modelContext.fetch(fetchDescriptor).first
     }
+    
+//    static func all(in context: ModelContext) -> [Word] {
+//        let fetchDescriptor = FetchDescriptor<Word>()
+//        do {
+//            let words = try context.fetch(fetchDescriptor)
+//            return words
+//        } catch {
+//            return []
+//        }
+//    }
+}
+
+
+
+extension PersistentModel {
+    
+    static func all(in context: ModelContext) -> [Self] {
+        let fetchDescriptor = FetchDescriptor<Self>()
+        do {
+            return try context.fetch(fetchDescriptor)
+        } catch {
+            return []
+        }
+    }
+    
 }
