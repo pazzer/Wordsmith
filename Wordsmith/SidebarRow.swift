@@ -13,6 +13,8 @@ struct SidebarRow: View {
     var item: Sidebar.Item
 
     var body: some View {
-        Text(item.rawValue.capitalized)
+        Label(item.rawValue.capitalized, systemImage: item.systemImage)
     }
+    
+    
 }

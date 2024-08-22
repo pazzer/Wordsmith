@@ -4,6 +4,7 @@
 > [!NOTE] Key
 > F: Feature
 > R: Refactor
+> B: Bug
 
 
 ### Model
@@ -21,10 +22,16 @@
 - [F] Get expand-all/collapse-all working for inspector's words list.
 - [F] Allow user to filter out words that are already part of the selected group.
 - [F] Allow user to order words list according to alphabet and date-added.
+- [F] Make inspector resizable.
+
+### Sidebar
+- [ ] <#Text Here#>
 
 ### Definiton Detail
 - [R] A reusable `Picker` that can edit the source and word-type selections.
 
+### Project
+- [B] Give the app an icon.
 
 
 
