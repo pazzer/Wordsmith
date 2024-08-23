@@ -36,7 +36,9 @@ struct GroupDetail: View {
         }
         .inspector(isPresented: $presented) {
             DefinitionsPicker(group: group)
+                .inspectorColumnWidth(min: 200, ideal: 325, max: 400)
         }
+        
     }
 }
 

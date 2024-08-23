@@ -20,40 +20,71 @@ struct DefinitionsPicker: View {
     @State var viewModel = ViewModel()
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(alignment: .leading) {
-                ForEach(words) { word in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            if word.isMember(of: group) {
-                                SwiftUI.Image(systemName: "checkmark")
-                            }
-                            Text(word.word)
-                                .font(.title3)
-                            Spacer()
-                            if !word.definitions.isEmpty {
-                                Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
-                                    viewModel.toggle(word)
+        VStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack(alignment: .leading) {
+                    ForEach(words) { word in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                if word.isMember(of: group) {
+                                    SwiftUI.Image(systemName: "checkmark")
                                 }
-                                .labelStyle(.iconOnly)
-                                .buttonStyle(PlainButtonStyle())
+                                Text(word.word)
+                                    .font(.title3)
+                                Spacer()
+                                if !word.definitions.isEmpty {
+                                    Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
+                                        viewModel.toggle(word)
+                                    }
+                                    .labelStyle(.iconOnly)
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                                
+                                
                             }
-                            
-                            
-                        }
-                        if viewModel.isExpanded(word) {
-                            VStack(alignment: .leading) {
-                                ForEach(word.definitions) { definition in
-                                    Toggle(isOn: binding(for: definition)) {
-                                        Text(definition.definition)
+                            if viewModel.isExpanded(word) {
+                                VStack(alignment: .leading) {
+                                    ForEach(word.definitions) { definition in
+                                        Toggle(isOn: binding(for: definition)) {
+                                            Text(definition.definition)
+                                        }
                                     }
                                 }
+                                .padding([.leading, .bottom], 16)
                             }
-                            .padding([.leading, .bottom], 16)
+                            
                         }
-                        
                     }
                 }
+            }
+            HStack {
+                Spacer()
+                Menu {
+                    SwiftUI.Group {
+                        Button(action: {
+                            viewModel.collapseAll()
+                        }, label: {
+                            Label("Collapse All", systemImage: "chevron.right")
+                        })
+                        .disabled(viewModel.expanded.isEmpty)
+                        Button(action: {
+                            viewModel.expandAll(in: context)
+                        }, label: {
+                            Label("Expand All", systemImage: "chevron.down")
+                                
+                        })
+                        .disabled(
+                            Word.all(in: context).count == viewModel.expanded.count
+                        )
+                        
+                    }
+                    .labelStyle(.titleAndIcon)
+                    
+                } label: {
+                    Label("Expand All/Collapse All", systemImage: "eye")
+                }
+                .buttonStyle(PlainButtonStyle())
+                .labelStyle(.iconOnly)
             }
         }
         .padding()
@@ -83,7 +114,7 @@ extension DefinitionsPicker {
     @Observable
     class ViewModel {
         
-        var expanded = Set<UUID>()
+        private(set) var expanded = Set<UUID>()
         
         func expand(_ word: Word) {
             expanded.insert(word.uuid)
@@ -104,7 +135,22 @@ extension DefinitionsPicker {
                 expanded.insert(word.uuid)
             }
         }
+        
+        func expandAll(in context: ModelContext) {
+            Word.all(in: context).forEach { word in
+                if !expanded.contains(word.uuid) {
+                    expanded.insert(word.uuid)
+                }
+            }
+        }
+        
+        func collapseAll() {
+            expanded.removeAll()
+        }
     }
+
+    
+    
     
 }
 
