@@ -16,18 +16,21 @@ protocol StringIdentifiable: PersistentModel {
     static var stringIdentifiableKeyPath: KeyPath<Self, String> { get }
 }
 
+protocol UUIDAble {
+    var uuid: UUID { get }
+}
+
 
 @Model
-final public class Word: CustomDebugStringConvertible, StringIdentifiable {
-    
+final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDAble {
     
     enum ValidationError: LocalizedError {
         case isDuplicate
     }
     
     var word: String
-    private(set) var created: Date
     let uuid = UUID()
+    private(set) var created: Date
     
     @Relationship(deleteRule: .cascade)
     var definitions: [Definition]

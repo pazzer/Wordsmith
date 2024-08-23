@@ -150,12 +150,12 @@
 			isa = PBXGroup;
 			children = (
 				CF9D9F362C62B36600C53503 /* SampleDataManager.swift */,
+				CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */,
 				CF9D9F322C62B36400C53503 /* Group.swift */,
 				CF9D9F382C62B36700C53503 /* Nameable.swift */,
 				CF9D9F352C62B36600C53503 /* Source.swift */,
 				CF9D9F342C62B36500C53503 /* Word.swift */,
 				CF9D9F372C62B36600C53503 /* Definition.swift */,
-				CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */,
 				CFAE90D82C6404E8001DE67A /* Image.swift */,
 				CF9D9F332C62B36500C53503 /* WordType.swift */,
 			);
@@ -387,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
@@ -426,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";

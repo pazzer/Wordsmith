@@ -25,9 +25,9 @@ struct ContentView: View {
             if let selectedSidebarItem = selectedSidebarItem {
                 switch selectedSidebarItem {
                 case .words:
-                    WordsList(selectedWord: $selectedWord)
+                    WordsList(selection: $selectedWord)
                 case .sources:
-                    SourcesList(selectedSource: $selectedSource)
+                    SourcesList(selection: $selectedSource)
                 case .groups:
                     GroupsList(selection: $selectedGroup)
                 }

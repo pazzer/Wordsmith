@@ -9,13 +9,6 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-protocol UUIDAble {
-    var uuid: UUID { get }
-}
-
-
-
-
 
 
 struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable, ModelView: View>: View {

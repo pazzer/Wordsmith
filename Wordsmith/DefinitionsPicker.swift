@@ -11,14 +11,13 @@ import SwiftData
 struct DefinitionsPicker: View {
     
     @Environment(\.modelContext) private var context
-
     
     @Query(sort: \Word.word, order: .forward)
     var words: [Word]
     
     @Bindable var group: Group
     
-    @State var viewModel = DefinitionsPickerViewModel()
+    @State var viewModel = ViewModel()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -76,6 +75,37 @@ struct DefinitionsPicker: View {
             isOn ? group.add(definition) : group.remove(definition)
         })
     }
+}
+
+
+extension DefinitionsPicker {
+    
+    @Observable
+    class ViewModel {
+        
+        var expanded = Set<UUID>()
+        
+        func expand(_ word: Word) {
+            expanded.insert(word.uuid)
+        }
+        
+        func collapse(_ word: Word) {
+            expanded.remove(word.uuid)
+        }
+        
+        func isExpanded(_ word: Word) -> Bool {
+            expanded.contains(word.uuid)
+        }
+        
+        func toggle(_ word: Word) {
+            if expanded.contains(word.uuid) {
+                expanded.remove(word.uuid)
+            } else {
+                expanded.insert(word.uuid)
+            }
+        }
+    }
+    
 }
 
 

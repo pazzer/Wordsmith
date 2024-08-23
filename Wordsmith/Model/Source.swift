@@ -11,7 +11,7 @@ import SwiftData
 
 
 @Model
-final class Source: StringIdentifiable {
+final class Source: StringIdentifiable, UUIDAble {
     
     
     var name: String
