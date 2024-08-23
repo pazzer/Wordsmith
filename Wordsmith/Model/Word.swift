@@ -112,7 +112,7 @@ extension Word {
     }
     
     static func fetch(from string: String, in modelContext: ModelContext) -> Word? {
-        let fetchDescriptor = FetchDescriptor<Self>(predicate: #Predicate { word in
+        let fetchDescriptor = FetchDescriptor<Word>(predicate: #Predicate { word in
             word.word == string
         })
         do {

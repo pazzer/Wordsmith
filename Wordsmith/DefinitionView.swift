@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 #if os(macOS)
 import AppKit.NSImage
-#elseif os(iOS)
+#else
 import UIKit.UIImage
 #endif
 

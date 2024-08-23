@@ -32,6 +32,3 @@
 
 ### Project
 - [B] Give the app an icon.
-
-
-

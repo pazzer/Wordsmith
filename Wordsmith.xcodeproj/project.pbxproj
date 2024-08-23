@@ -24,12 +24,10 @@
 		CF9D9F462C62BB6A00C53503 /* WordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F452C62BB6900C53503 /* WordsList.swift */; };
 		CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F472C62BD2700C53503 /* WordRow.swift */; };
 		CF9D9F4A2C62BDB800C53503 /* WordDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F492C62BDB800C53503 /* WordDetail.swift */; };
-		CF9D9F4C2C62C48100C53503 /* NewWordSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */; };
 		CFAE90D92C6404E8001DE67A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90D82C6404E8001DE67A /* Image.swift */; };
 		CFAE90DB2C667E72001DE67A /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90DA2C667E72001DE67A /* DefinitionView.swift */; };
 		CFAE90DD2C6680D0001DE67A /* WordBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE90DC2C6680D0001DE67A /* WordBanner.swift */; };
 		CFD1D23B2C74AE3B0023BA90 /* SourcesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */; };
-		CFD1D23F2C74AEFB0023BA90 /* NewSourceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */; };
 		CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2402C74B03B0023BA90 /* SourceRow.swift */; };
 		CFD1D2432C74B2AB0023BA90 /* SourceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */; };
 		CFD1D2452C7516B00023BA90 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1D2442C7516B00023BA90 /* GroupRow.swift */; };
@@ -61,13 +59,11 @@
 		CF9D9F452C62BB6900C53503 /* WordsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsList.swift; sourceTree = "<group>"; };
 		CF9D9F472C62BD2700C53503 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		CF9D9F492C62BDB800C53503 /* WordDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetail.swift; sourceTree = "<group>"; };
-		CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWordSheet.swift; sourceTree = "<group>"; };
 		CFAE90D82C6404E8001DE67A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		CFAE90DA2C667E72001DE67A /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		CFAE90DC2C6680D0001DE67A /* WordBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBanner.swift; sourceTree = "<group>"; };
 		CFD1D2392C74AC8B0023BA90 /* Next.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Next.md; sourceTree = "<group>"; };
 		CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesList.swift; sourceTree = "<group>"; };
-		CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSourceSheet.swift; sourceTree = "<group>"; };
 		CFD1D2402C74B03B0023BA90 /* SourceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRow.swift; sourceTree = "<group>"; };
 		CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDetail.swift; sourceTree = "<group>"; };
 		CFD1D2442C7516B00023BA90 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
@@ -89,6 +85,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF9D35682C788A1200843D38 /* Asset Lists */ = {
+			isa = PBXGroup;
+			children = (
+				CF9D9F452C62BB6900C53503 /* WordsList.swift */,
+				CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */,
+				CFD1D2502C765D8E0023BA90 /* GroupsList.swift */,
+				CFD1D2482C7517660023BA90 /* ContentList.swift */,
+				CFD1D24E2C765CC90023BA90 /* NewItemSheet.swift */,
+			);
+			path = "Asset Lists";
+			sourceTree = "<group>";
+		};
+		CF9D35692C788A5B00843D38 /* Asset List Rows */ = {
+			isa = PBXGroup;
+			children = (
+				CF9D9F472C62BD2700C53503 /* WordRow.swift */,
+				CFD1D2402C74B03B0023BA90 /* SourceRow.swift */,
+				CFD1D2442C7516B00023BA90 /* GroupRow.swift */,
+			);
+			path = "Asset List Rows";
+			sourceTree = "<group>";
+		};
+		CF9D356A2C788A8200843D38 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
+				CF9D9F432C62B6C900C53503 /* SidebarRow.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		CF9D9F152C62B33E00C53503 = {
 			isa = PBXGroup;
 			children = (
@@ -112,24 +139,15 @@
 			children = (
 				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
 				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
-				CF9D9F412C62B3E300C53503 /* Sidebar.swift */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
 				CFD1D24C2C75E48A0023BA90 /* DefinitionsPicker.swift */,
 				CFD1D24A2C75D04D0023BA90 /* GroupDetail.swift */,
 				CFD1D2422C74B2AB0023BA90 /* SourceDetail.swift */,
 				CF9D9F492C62BDB800C53503 /* WordDetail.swift */,
 				CFAE90DA2C667E72001DE67A /* DefinitionView.swift */,
-				CF9D9F452C62BB6900C53503 /* WordsList.swift */,
-				CFD1D23A2C74AE3B0023BA90 /* SourcesList.swift */,
-				CFD1D2482C7517660023BA90 /* ContentList.swift */,
-				CFD1D2502C765D8E0023BA90 /* GroupsList.swift */,
-				CF9D9F432C62B6C900C53503 /* SidebarRow.swift */,
-				CF9D9F472C62BD2700C53503 /* WordRow.swift */,
-				CFD1D2402C74B03B0023BA90 /* SourceRow.swift */,
-				CFD1D2442C7516B00023BA90 /* GroupRow.swift */,
-				CFD1D23E2C74AEFB0023BA90 /* NewSourceSheet.swift */,
-				CFD1D24E2C765CC90023BA90 /* NewItemSheet.swift */,
-				CF9D9F4B2C62C48100C53503 /* NewWordSheet.swift */,
+				CF9D356A2C788A8200843D38 /* Sidebar */,
+				CF9D35682C788A1200843D38 /* Asset Lists */,
+				CF9D35692C788A5B00843D38 /* Asset List Rows */,
 				CF9D9F272C62B34200C53503 /* Assets.xcassets */,
 				CF9D9F292C62B34200C53503 /* Wordsmith.entitlements */,
 				CF9D9F402C62B36F00C53503 /* Model */,
@@ -232,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD1D23F2C74AEFB0023BA90 /* NewSourceSheet.swift in Sources */,
 				CF9D9F4A2C62BDB800C53503 /* WordDetail.swift in Sources */,
 				CFD1D24B2C75D04D0023BA90 /* GroupDetail.swift in Sources */,
 				CFD1D2452C7516B00023BA90 /* GroupRow.swift in Sources */,
@@ -242,7 +259,6 @@
 				CFD1D23B2C74AE3B0023BA90 /* SourcesList.swift in Sources */,
 				CF9D35672C77BEF100843D38 /* PersistentModel+Convenience.swift in Sources */,
 				CFD1D24D2C75E48A0023BA90 /* DefinitionsPicker.swift in Sources */,
-				CF9D9F4C2C62C48100C53503 /* NewWordSheet.swift in Sources */,
 				CF9D9F3E2C62B36700C53503 /* Definition.swift in Sources */,
 				CF9D9F442C62B6C900C53503 /* SidebarRow.swift in Sources */,
 				CF9D9F3D2C62B36700C53503 /* SampleDataManager.swift in Sources */,
