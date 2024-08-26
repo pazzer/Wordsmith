@@ -11,7 +11,9 @@ import SwiftData
 
 
 @Model
-final class Source: StringIdentifiable, UUIDAble {
+final class Source: StringIdentifiable, UUIDAble, WordsmithModel {
+    
+    static var defaultSortDescriptors = [SortDescriptor(\Source.name)]
     
     
     var name: String

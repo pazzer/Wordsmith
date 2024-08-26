@@ -76,7 +76,6 @@ struct DefinitionsPicker: View {
                         .disabled(
                             Word.all(in: context).count == viewModel.expanded.count
                         )
-                        
                     }
                     .labelStyle(.titleAndIcon)
                     
@@ -148,10 +147,6 @@ extension DefinitionsPicker {
             expanded.removeAll()
         }
     }
-
-    
-    
-    
 }
 
 

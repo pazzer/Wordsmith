@@ -9,7 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-final class Definition: UUIDAble {
+final class Definition: UUIDAble, WordsmithModel {
+    
+    static var defaultSortDescriptors = [SortDescriptor(\Definition.definition)]
     
     var definition: String
     var wordType: WordType?
@@ -26,6 +28,10 @@ final class Definition: UUIDAble {
     var dateCreated: Date
     
     var source: Source?
+    
+    func add(_ image: SDImage) {
+        images.append(image)
+    }
     
     init(definition: String, source: Source? = nil, wordType: WordType? = nil) {
         self.definition = definition

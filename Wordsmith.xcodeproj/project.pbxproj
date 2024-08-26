@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF131BC32C7A2E7000DCE418 /* EnvironmentIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */; };
+		CF131BC52C7A639200DCE418 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131BC42C7A639200DCE418 /* Logger+.swift */; };
+		CF8526292C7B7E28004E4CCF /* word_db.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8526282C7B7DC4004E4CCF /* word_db.plist */; };
+		CF85262B2C7B7F48004E4CCF /* WordsPlistMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */; };
 		CF9D35672C77BEF100843D38 /* PersistentModel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */; };
 		CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */; };
 		CF9D9F242C62B33E00C53503 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F232C62B33E00C53503 /* ContentView.swift */; };
@@ -39,8 +43,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentIndicator.swift; sourceTree = "<group>"; };
+		CF131BC42C7A639200DCE418 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
+		CF8526272C7A7995004E4CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CF8526282C7B7DC4004E4CCF /* word_db.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = word_db.plist; path = Wordsmith/word_db.plist; sourceTree = "<group>"; };
+		CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPlistMigrator.swift; sourceTree = "<group>"; };
 		CF8DD70B2C77B83F0031613B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistentModel+Convenience.swift"; sourceTree = "<group>"; };
+		CF9D356D2C7905C800843D38 /* Config-personal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Config-personal.xcconfig"; sourceTree = "<group>"; };
+		CF9D356E2C79060800843D38 /* Config-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Config-debug.xcconfig"; sourceTree = "<group>"; };
 		CF9D9F1E2C62B33E00C53503 /* Wordsmith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordsmith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsmithApp.swift; sourceTree = "<group>"; };
 		CF9D9F232C62B33E00C53503 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +130,7 @@
 		CF9D9F152C62B33E00C53503 = {
 			isa = PBXGroup;
 			children = (
+				CF8526282C7B7DC4004E4CCF /* word_db.plist */,
 				CFD1D2392C74AC8B0023BA90 /* Next.md */,
 				CF8DD70B2C77B83F0031613B /* README.md */,
 				CF9D9F202C62B33E00C53503 /* Wordsmith */,
@@ -137,6 +149,11 @@
 		CF9D9F202C62B33E00C53503 /* Wordsmith */ = {
 			isa = PBXGroup;
 			children = (
+				CF9D9F402C62B36F00C53503 /* Model */,
+				CF8526272C7A7995004E4CCF /* Info.plist */,
+				CF131BC42C7A639200DCE418 /* Logger+.swift */,
+				CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */,
+				CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */,
 				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
 				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
 				CFAE90DC2C6680D0001DE67A /* WordBanner.swift */,
@@ -149,8 +166,9 @@
 				CF9D35682C788A1200843D38 /* Asset Lists */,
 				CF9D35692C788A5B00843D38 /* Asset List Rows */,
 				CF9D9F272C62B34200C53503 /* Assets.xcassets */,
+				CF9D356D2C7905C800843D38 /* Config-personal.xcconfig */,
+				CF9D356E2C79060800843D38 /* Config-debug.xcconfig */,
 				CF9D9F292C62B34200C53503 /* Wordsmith.entitlements */,
-				CF9D9F402C62B36F00C53503 /* Model */,
 				CF9D9F2A2C62B34200C53503 /* Preview Content */,
 			);
 			path = Wordsmith;
@@ -238,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8526292C7B7E28004E4CCF /* word_db.plist in Resources */,
 				CF9D9F2C2C62B34200C53503 /* Preview Assets.xcassets in Resources */,
 				CF9D9F282C62B34200C53503 /* Assets.xcassets in Resources */,
 			);
@@ -264,13 +283,16 @@
 				CF9D9F3D2C62B36700C53503 /* SampleDataManager.swift in Sources */,
 				CF9D9F3A2C62B36700C53503 /* WordType.swift in Sources */,
 				CFD1D24F2C765CC90023BA90 /* NewItemSheet.swift in Sources */,
+				CF131BC32C7A2E7000DCE418 /* EnvironmentIndicator.swift in Sources */,
 				CFD1D2512C765D8E0023BA90 /* GroupsList.swift in Sources */,
 				CFAE90DB2C667E72001DE67A /* DefinitionView.swift in Sources */,
 				CF9D9F3C2C62B36700C53503 /* Source.swift in Sources */,
+				CF131BC52C7A639200DCE418 /* Logger+.swift in Sources */,
 				CFD1D2432C74B2AB0023BA90 /* SourceDetail.swift in Sources */,
 				CFAE90D92C6404E8001DE67A /* Image.swift in Sources */,
 				CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */,
 				CF9D9F3F2C62B36700C53503 /* Nameable.swift in Sources */,
+				CF85262B2C7B7F48004E4CCF /* WordsPlistMigrator.swift in Sources */,
 				CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */,
 				CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */,
 				CFD1D2492C7517660023BA90 /* ContentList.swift in Sources */,
@@ -283,6 +305,113 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CF9D356B2C79011400843D38 /* Personal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
+				PRODUCT_MODULE_NAME = "$(inherited)";
+				PRODUCT_NAME = Wordsmith;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Personal;
+		};
+		CF9D356C2C79011400843D38 /* Personal */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF9D356D2C7905C800843D38 /* Config-personal.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(inherited)";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CONFIG_ID = personal;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
+				DEVELOPMENT_TEAM = RLT3Y7VWF4;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Wordsmith/Info.plist;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Personal;
+		};
 		CF9D9F2D2C62B34200C53503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -339,6 +468,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
+				PRODUCT_MODULE_NAME = "$(inherited)";
+				PRODUCT_NAME = Wordsmith;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -393,24 +525,31 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
+				PRODUCT_MODULE_NAME = "$(inherited)";
+				PRODUCT_NAME = Wordsmith;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
 		CF9D9F302C62B34200C53503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF9D356E2C79060800843D38 /* Config-debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(inherited)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CONFIG_ID = debug;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
 				DEVELOPMENT_TEAM = RLT3Y7VWF4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Wordsmith/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -426,8 +565,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -439,17 +578,20 @@
 		CF9D9F312C62B34200C53503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(inherited)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Wordsmith/Wordsmith.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CONFIG_ID = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wordsmith/Preview Content\"";
 				DEVELOPMENT_TEAM = RLT3Y7VWF4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Wordsmith/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -465,8 +607,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.paulpatterson.Wordsmith;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
+				PRODUCT_NAME = "$(inherited)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -482,6 +624,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF9D9F2D2C62B34200C53503 /* Debug */,
+				CF9D356B2C79011400843D38 /* Personal */,
 				CF9D9F2E2C62B34200C53503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -491,6 +634,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF9D9F302C62B34200C53503 /* Debug */,
+				CF9D356C2C79011400843D38 /* Personal */,
 				CF9D9F312C62B34200C53503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

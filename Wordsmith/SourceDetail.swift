@@ -13,6 +13,8 @@ struct SourceDetail: View {
     
     @Bindable var source: Source
     
+    
+    
     var body: some View {
         VStack {
             HStack(alignment: .center) {

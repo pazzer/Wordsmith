@@ -9,8 +9,19 @@ import SwiftData
 import SwiftUI
 
 @Model
-class WordType: CustomDebugStringConvertible {
- 
+final class WordType: CustomDebugStringConvertible, WordsmithModel {
+    
+    static var defaultSortDescriptors = [SortDescriptor(\WordType.name)]
+    
+    /// Loaded into the database the first time the app is run.
+    enum SystemPreset: String, CaseIterable {
+        case adjective
+        case noun
+        case adverb
+        case verb
+    }
+        
+    
     var name: String
     
     @Relationship(deleteRule: .nullify)
@@ -40,5 +51,9 @@ class WordType: CustomDebugStringConvertible {
         }
     }
     
-    
+    static func installPresets(in context: ModelContext) {
+        SystemPreset.allCases.forEach {
+            context.insert( WordType(name: $0.rawValue ))
+        }
+    }
 }

@@ -45,7 +45,11 @@ struct Sidebar: View {
                         SidebarRow(item: item)
                     }
                 }
+                
             }
+            Spacer()
+            // for house-keeping.
+            EnvironmentIndicator()
         }
         
         .navigationTitle("Words")
@@ -63,3 +67,6 @@ struct Sidebar: View {
         }
     }
 }
+
+
+

@@ -22,11 +22,13 @@ protocol UUIDAble {
 
 
 @Model
-final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDAble {
+final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDAble, WordsmithModel {
     
     enum ValidationError: LocalizedError {
         case isDuplicate
     }
+    
+    static var defaultSortDescriptors = [SortDescriptor(\Word.word)]
     
     var word: String
     let uuid = UUID()

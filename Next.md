@@ -6,10 +6,23 @@
 > R: Refactor
 > B: Bug
 
+### Priority Tickets
+Separate GroupView rows to make adding images better (stop all photo icons lighting up).
+Adding nationality, archaic
+Dealing with exact synonyms (saloon/sedan; bosun/boatswain).
+Add search bar to WordList
+
+
+### WordList
+- [F] Search bar
 
 ### Model
 - [✓] Add generic `fetchByUUID` static method to all persistent model classes (currently only available on `Definition`).
 - [F] Get the database onto the cloud and allow the iOS app read/write access.
+- [F] Handling synonyms (boatswain/bosun).
+- [F] Add 'facts' or 'did you know' field for words. For example 'transit van': 'introduced by Ford in 1965', or 'Luton Van': 'the biggest vehicle you can drive on a standard licence.'
+- [F] Add geography flags for definitions (e.g. american, australian, irish, etc).
+- [F] Add concept of primary definition image.
 
 ### WordDetail
 - [F] Users should be able to delete words.
@@ -23,12 +36,14 @@
 - [F] Allow user to filter out words that are already part of the selected group.
 - [F] Allow user to order words list according to alphabet and date-added.
 - [✓] Make inspector resizable.
+- [F] Implement filter-by-search
 
 ### Sidebar
 
 
 ### Definiton Detail
 - [R] A reusable `Picker` that can edit the source and word-type selections.
+- [F] Deleting images.
 
 ### Project
 - [B] Give the app an icon.

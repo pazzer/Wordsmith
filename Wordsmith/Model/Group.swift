@@ -11,8 +11,10 @@ import SwiftUI
 import Combine
 
 @Model
-final public class Group: UUIDAble, StringIdentifiable {
-    
+final public class Group: UUIDAble, StringIdentifiable, WordsmithModel {
+
+    static var defaultSortDescriptors = [SortDescriptor(\Group.name)]
+
     var name: String
     var summary: String?
     let uuid = UUID()

@@ -12,26 +12,22 @@ import AppKit.NSImage
 import UIKit.UIImage
 #endif
 
-typealias SDImage = Wordsmith.Image
+
+typealias SDImage = Image
 
 class SampleDataManager {
     
-    private enum WordType: String, CaseIterable {
-        case adjective
-        case noun
-        case adverb
-        case verb
-    }
-    
+
     private enum ImageResource: String, CaseIterable {
         case arabesquePattern1 = "arabesque-pattern1"
         case arabesquePattern2 = "arabesque-pattern2"
         case arabesquePattern3 = "arabesque-pattern3"
         case arabesqueBallet = "arabesque-ballet"
         case mausoleum = "mausoleum"
+        case loophone = "loophole"
     }
     
-    private enum Group: CaseIterable {
+    private enum _Group: CaseIterable {
         case theChristianChurch
         case architecture
         case theLaw
@@ -77,17 +73,10 @@ class SampleDataManager {
     
     static func loadSampleData(into context: ModelContext) {
         Self.loadSources(into: context)
-        Self.loadWordTypes(into: context)
         Self.loadGroups(into: context)
         Self.loadWordsAndDefinitions(into: context)
     }
 
-    private static func loadWordTypes(into context: ModelContext) {
-        WordType.allCases.forEach {
-            context.insert( Wordsmith.WordType(name: $0.rawValue ))
-        }
-    }
-    
     private static func loadSources(into context: ModelContext) {
         DefinitionSource.allCases.forEach {
             context.insert( Source(name: $0.name) )
@@ -95,8 +84,8 @@ class SampleDataManager {
     }
     
     private static func loadGroups(into context: ModelContext) {
-        Group.allCases.forEach {
-            context.insert( Wordsmith.Group(name: $0.name) )
+        _Group.allCases.forEach {
+            context.insert( Group(name: $0.name) )
         }
     }
 
@@ -114,7 +103,7 @@ class SampleDataManager {
                 context.insert(definition)
                 
                 if let name = wordType?.rawValue {
-                   definition.wordType = Wordsmith.WordType.withName(name, in: context)
+                   definition.wordType = WordType.withName(name, in: context)
                 } else {
                     definition.wordType = nil
                 }
@@ -125,7 +114,7 @@ class SampleDataManager {
                 }
                 
                 groups
-                    .compactMap {  Wordsmith.Group.find($0.name, in: context) }
+                    .compactMap {  Group.find($0.name, in: context) }
                     .forEach { definition.groups.append($0) }
                 
                 images
@@ -155,7 +144,7 @@ class SampleDataManager {
     
 
     
-    private static var wordsAndDefinitions: [String: [(String, WordType?, DefinitionSource?, [Group], [ImageResource])]] {
+    private static var wordsAndDefinitions: [String: [(String, WordType.SystemPreset?, DefinitionSource?, [_Group], [ImageResource])]] {
          [
             "sepulchre":
                 [(
@@ -181,7 +170,7 @@ class SampleDataManager {
                     .noun,
                     .merriamWebster,
                     [.architecture],
-                    []
+                    [.loophone]
                 ),
                  (
                     "a small mistake in an agreement or law that gives someone the chance to avoid having to do something.",

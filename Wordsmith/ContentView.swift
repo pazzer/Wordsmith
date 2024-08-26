@@ -48,12 +48,15 @@ struct ContentView: View {
                     if let selectedGroup = selectedGroup {
                         GroupDetail(group: selectedGroup)
                     }
+                    
                 }
             } else {
                 ContentUnavailableView("No Selection", systemImage: "sidebar.left")
             }
             
         }
+        .navigationTitle("Wordsmith")
+        
     }
     
     

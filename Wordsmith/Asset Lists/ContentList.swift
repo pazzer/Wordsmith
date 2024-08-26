@@ -1,3 +1,4 @@
+
 //
 //  ContentList.swift
 // Wordsmith
@@ -9,14 +10,16 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+protocol WordsmithModel: PersistentModel {
+    static var defaultSortDescriptors: [SortDescriptor<Self>] { get }
+}
 
-
-struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable, ModelView: View>: View {
+struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable & WordsmithModel, ModelView: View>: View {
     
     
     @State private var newItemSheetPresented = false
     
-    @Query
+    @Query(sort: Model.defaultSortDescriptors)
     var content: [Model]
     
     @Binding var selection: Model?
@@ -26,7 +29,7 @@ struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable, Model
     @ViewBuilder var modelViewBuilder: (Model) -> ModelView
     
     var newItemValidator: (String) -> Bool
-    
+        
     var body: some View {
         VStack(spacing: 0) {
             List(selection: $selection) {
