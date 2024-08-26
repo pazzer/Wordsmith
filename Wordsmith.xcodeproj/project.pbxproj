@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		CF131BC32C7A2E7000DCE418 /* EnvironmentIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */; };
 		CF131BC52C7A639200DCE418 /* Logger+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131BC42C7A639200DCE418 /* Logger+.swift */; };
-		CF8526292C7B7E28004E4CCF /* word_db.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8526282C7B7DC4004E4CCF /* word_db.plist */; };
-		CF85262B2C7B7F48004E4CCF /* WordsPlistMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */; };
 		CF9D35672C77BEF100843D38 /* PersistentModel+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */; };
 		CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */; };
 		CF9D9F242C62B33E00C53503 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D9F232C62B33E00C53503 /* ContentView.swift */; };
@@ -46,8 +44,6 @@
 		CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentIndicator.swift; sourceTree = "<group>"; };
 		CF131BC42C7A639200DCE418 /* Logger+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+.swift"; sourceTree = "<group>"; };
 		CF8526272C7A7995004E4CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CF8526282C7B7DC4004E4CCF /* word_db.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = word_db.plist; path = Wordsmith/word_db.plist; sourceTree = "<group>"; };
-		CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPlistMigrator.swift; sourceTree = "<group>"; };
 		CF8DD70B2C77B83F0031613B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		CF9D35662C77BEF100843D38 /* PersistentModel+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistentModel+Convenience.swift"; sourceTree = "<group>"; };
 		CF9D356D2C7905C800843D38 /* Config-personal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Config-personal.xcconfig"; sourceTree = "<group>"; };
@@ -130,7 +126,6 @@
 		CF9D9F152C62B33E00C53503 = {
 			isa = PBXGroup;
 			children = (
-				CF8526282C7B7DC4004E4CCF /* word_db.plist */,
 				CFD1D2392C74AC8B0023BA90 /* Next.md */,
 				CF8DD70B2C77B83F0031613B /* README.md */,
 				CF9D9F202C62B33E00C53503 /* Wordsmith */,
@@ -152,7 +147,6 @@
 				CF9D9F402C62B36F00C53503 /* Model */,
 				CF8526272C7A7995004E4CCF /* Info.plist */,
 				CF131BC42C7A639200DCE418 /* Logger+.swift */,
-				CF85262A2C7B7EC8004E4CCF /* WordsPlistMigrator.swift */,
 				CF131BC22C7A2DE900DCE418 /* EnvironmentIndicator.swift */,
 				CF9D9F212C62B33E00C53503 /* WordsmithApp.swift */,
 				CF9D9F232C62B33E00C53503 /* ContentView.swift */,
@@ -256,7 +250,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8526292C7B7E28004E4CCF /* word_db.plist in Resources */,
 				CF9D9F2C2C62B34200C53503 /* Preview Assets.xcassets in Resources */,
 				CF9D9F282C62B34200C53503 /* Assets.xcassets in Resources */,
 			);
@@ -292,7 +285,6 @@
 				CFAE90D92C6404E8001DE67A /* Image.swift in Sources */,
 				CFD1D2412C74B03B0023BA90 /* SourceRow.swift in Sources */,
 				CF9D9F3F2C62B36700C53503 /* Nameable.swift in Sources */,
-				CF85262B2C7B7F48004E4CCF /* WordsPlistMigrator.swift in Sources */,
 				CF9D9F222C62B33E00C53503 /* WordsmithApp.swift in Sources */,
 				CF9D9F482C62BD2800C53503 /* WordRow.swift in Sources */,
 				CFD1D2492C7517660023BA90 /* ContentList.swift in Sources */,
