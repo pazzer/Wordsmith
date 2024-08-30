@@ -23,7 +23,10 @@ struct GroupItem: View {
             VStack(alignment: .leading) {
                 Text(definition.word.word)
                     .font(.body.bold())
-                Text(definition.definition)
+                if !definition.isPlaceholder {
+                    Text(definition.definition)
+                }
+                
             }
         }
     }

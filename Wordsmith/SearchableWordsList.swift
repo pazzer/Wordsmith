@@ -44,10 +44,24 @@ struct SearchableWordsList: View {
                     VStack(alignment: .leading) {
                         HStack {
                             if word.isMember(of: group) {
-                                SwiftUI.Image(systemName: "checkmark")
+                                Button(action: {
+                                    removeAllDefinitions(word)
+                                }, label: {
+                                    Label("", systemImage: "checkmark.circle.fill")
+                                })
+                                .labelStyle(.iconOnly)
+                                .buttonStyle(PlainButtonStyle())
+                            } else {
+                                Button(action: {
+                                    addAllDefinitions(word)
+                                }, label: {
+                                    Label("", systemImage: "circle")
+                                })
+                                .labelStyle(.iconOnly)
+                                .buttonStyle(PlainButtonStyle())
                             }
                             Text(word.word)
-                                .font(.title3)
+                                .font(.system(size: 14))
                             Spacer()
                             if !word.definitionIsPlaceholder {
                                 Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
@@ -73,6 +87,17 @@ struct SearchableWordsList: View {
         }
     }
     
+    func addAllDefinitions(_ word: Word) {
+        word.definitions.forEach { definition in
+            group.add(definition)
+        }
+    }
+    
+    func removeAllDefinitions(_ word: Word) {
+        word.definitions.forEach { definition in
+            group.remove(definition)
+        }
+    }
     
     private func isExpandedBinding(for word: Word) -> Binding<Bool> {
         return Binding(get: {
