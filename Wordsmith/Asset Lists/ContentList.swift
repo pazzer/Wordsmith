@@ -29,6 +29,8 @@ struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable & Word
     @ViewBuilder var modelViewBuilder: (Model) -> ModelView
     
     var newItemValidator: (String) -> Bool
+    
+    var addItem: ((String, ModelContext) -> Void)?
         
     var body: some View {
         VStack(spacing: 0) {
@@ -62,7 +64,7 @@ struct ContentList<Model: PersistentModel & UUIDAble & StringIdentifiable & Word
             .background(.quinary)
         }
         .sheet(isPresented: $newItemSheetPresented, content: {
-            NewItemSheet(isPresented: $newItemSheetPresented, selectedItem: $selection, canAdd: newItemValidator)
+            NewItemSheet(isPresented: $newItemSheetPresented, selectedItem: $selection, canAdd: newItemValidator, addItem: addItem)
             .frame(width: 300, height: 300)
         })
     }

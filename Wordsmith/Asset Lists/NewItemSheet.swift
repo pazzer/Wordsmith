@@ -29,6 +29,8 @@ struct NewItemSheet<Model: PersistentModel & UUIDAble & StringIdentifiable>: Vie
         invalidCandidateValue = candidateValue.isEmpty || !canAdd(candidateValue)
     }
     
+    var addItem: ((String, ModelContext) -> Void)?
+    
     var body: some View {
         
         VStack {
@@ -46,9 +48,14 @@ struct NewItemSheet<Model: PersistentModel & UUIDAble & StringIdentifiable>: Vie
                 Spacer()
                 
                 Button("Add", role: .none) {
-                    let item = Model.create(from: candidateValue, in: modelContext)
-                    modelContext.insert(item)
+                    if let addItem = self.addItem {
+                        addItem(candidateValue, modelContext)
+                    } else {
+                        let item = Model.create(from: candidateValue, in: modelContext)
+                        modelContext.insert(item)
+                    }
                     isPresented = false
+                    
                 }
                 .disabled(invalidCandidateValue)
             }

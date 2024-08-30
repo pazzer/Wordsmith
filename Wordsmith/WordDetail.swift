@@ -15,16 +15,18 @@ struct WordDetail: View {
     @Binding var selectedDefinition: Definition?
     @Environment(\.modelContext) private var context
     
-
-    
-    @Query(sort: \Definition.dateCreated, order: .reverse)
+    @Query
     var definitions: [Definition]
     
     init(word: Word, selectedDefinition: Binding<Definition?>) {
         self.word = word
         let targetUUID = word.uuid
         self._definitions = Query(filter: #Predicate {
-            $0.word?.uuid == targetUUID
+            if $0.word?.uuid == targetUUID && !$0.isPlaceholder {
+                return true
+            } else {
+                return false
+            }
         }, sort: \.dateCreated)
         self._selectedDefinition = selectedDefinition
     }
@@ -69,10 +71,7 @@ struct WordDetail: View {
                         }
                         .swipeActions {
                             Button(role: .destructive) {
-                                word.definitions.removeAll(where: {$0.uuid == definition.uuid})
-                                context.delete(definition)
-                                
-                                try? context.save()
+                                word.delete(definition, in: context)
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
@@ -88,8 +87,11 @@ struct WordDetail: View {
                         .foregroundStyle(.quinary)
                     HStack {
                         Button(action: {
-                            newDefinition()
-                            
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    let _ = word.insertDefinition()
+                                }
+                            }
                         }, label: {
                             Label("Add Definition", systemImage: "plus")
                         })
@@ -104,21 +106,6 @@ struct WordDetail: View {
         }
     }
     
-    
-    func newDefinition() {
-        
-        let definition = Definition(definition: "\(word.word) means...")
-        
-        withAnimation {
-            context.insert(definition)
-            word.definitions.append(definition)
-            
-        }
-        
-        
-        
-        
-    }
 }
 
 

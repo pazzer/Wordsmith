@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import os
 
 @Model
 final class Definition: UUIDAble, WordsmithModel {
@@ -38,6 +39,7 @@ final class Definition: UUIDAble, WordsmithModel {
         self.wordType = wordType
         self.source = source
         self.dateCreated = .now
+        self.isPlaceholder = false
     }
     
     var combinedMetedata: String? {
@@ -60,9 +62,16 @@ final class Definition: UUIDAble, WordsmithModel {
         groups.first(where: { $0.uuid == group.uuid }) != nil
     }
     
+    var isPlaceholder = true
+}
 
-
+extension Definition {
     
-
+    static func placeholderDefinition() -> Definition {
+        let definition = Definition(definition: "")
+        definition.isPlaceholder = true
+        return definition
+    }
     
 }
+

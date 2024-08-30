@@ -49,7 +49,7 @@ struct SearchableWordsList: View {
                             Text(word.word)
                                 .font(.title3)
                             Spacer()
-                            if !word.definitions.isEmpty {
+                            if !word.definitionIsPlaceholder {
                                 Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
                                     viewModel.toggle(word)
                                 }

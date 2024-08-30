@@ -82,10 +82,6 @@ struct WordsmithApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
-    
-    static func summarizeLaunchEnvironment() {
-        
-    }
 }
 
 

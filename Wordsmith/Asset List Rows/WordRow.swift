@@ -17,7 +17,7 @@ struct WordRow: View {
         HStack {
             Text(word.word)
             Spacer()
-            Text("\(word.definitions.count)")
+            Text("\(word.definitions.filter { !$0.isPlaceholder }.count)")
                 .foregroundStyle(.secondary)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftData
-
+import os
 
 protocol StringIdentifiable: PersistentModel {
     static func find(_ string: String, in modelContext: ModelContext, create: Bool) -> Self?
@@ -35,7 +35,7 @@ final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDA
     private(set) var created: Date
     
     @Relationship(deleteRule: .cascade)
-    var definitions: [Definition]
+    private(set) var definitions: [Definition]
     
     init(word: String) {
         self.word = word
@@ -88,14 +88,57 @@ final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDA
             .first
     }
     
-    
-    
 
+    var definitionIsPlaceholder: Bool {
+        definitions.count == 1 && definitions.first?.isPlaceholder == true
+    }
+    
+    func delete(_ definition: Definition, in context: ModelContext) {
+        definitions.removeAll(where: {$0.uuid == uuid})
+        context.delete(definition)
+        
+        if definitions.isEmpty {
+            Logger.database.info("removed last definition from '\(self.word)")
+            insertPlaceholderDefinition()
+        } else {
+            Logger.database.info("removed definition from '\(self.word)")
+        }
+    }
+    
+    func insertDefinition(text: String? = nil) -> Definition {
+        if definitionIsPlaceholder {
+            removePlaceholderDefinition()
+        }
+        
+        let definition = Definition(definition: text ?? "\(self.word) means...")
+        modelContext?.insert(definition)
+        definitions.append(definition)
+        Logger.database.debug("added new definition to '\(self.word)'")
+        return definition
+    }
+    
+    func insertPlaceholderDefinition() {
+        precondition(definitions.isEmpty)
+        let definition = Definition.placeholderDefinition()
+        modelContext?.insert(definition)
+        definitions.append(definition)
+        Logger.database.info("added placeholder definition to '\(self.word)'.")
+    }
+    
+    func removePlaceholderDefinition() {
+        precondition(definitions.count == 1 && definitions.first?.isPlaceholder == true)
+        let definition = definitions.removeFirst()
+        modelContext?.delete(definition)
+        Logger.database.info("deleted placeholder definition belonging to '\(self.word)'")
+    }
+    
 }
 
 /// StringIdentifiable conformace
 /// When predicates support key-paths this can become an extension on PersistentModel.
 extension Word {
+    
+
     
     static var stringIdentifiableKeyPath: KeyPath<Word, String> {
         \Word.word
@@ -136,6 +179,17 @@ extension Word {
         
     }
 
+    static func new(word: String, in context: ModelContext) -> Word {
+        let word = Word(word: word)
+        context.insert(word)
+        Logger.database.info("inserted word '\(word.word)'")
+        word.insertPlaceholderDefinition()
+        return word
+    }
+    
+    
+    
+    
     
 }
 

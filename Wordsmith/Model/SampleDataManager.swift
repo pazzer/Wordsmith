@@ -96,49 +96,52 @@ class SampleDataManager {
         Self.wordsAndDefinitions.forEach { (word, definitions)  in
             let word = Word(word: word)
             context.insert(word)
-            
-            definitions.forEach { (text, wordType, source, groups, images) in
-                
-                let definition = Definition(definition: text)
-                context.insert(definition)
-                
-                if let name = wordType?.rawValue {
-                   definition.wordType = WordType.withName(name, in: context)
-                } else {
-                    definition.wordType = nil
-                }
-                
-                if let name = source?.name {
-                    let source = Source.find(name, in: context)
-                    definition.source = source
-                }
-                
-                groups
-                    .compactMap {  Group.find($0.name, in: context) }
-                    .forEach { definition.groups.append($0) }
-                
-                images
-                    .forEach { imageResource in
-                        if let uuid = imagesMap[imageResource] {
-                            let image = Image.withUUID(uuid, in: context)
-                            definition.images.append(image)
-                        } else {
-                            let image: Image
-                            #if os(macOS)
-                            let nsImage = NSImage(imageLiteralResourceName: imageResource.rawValue)
-                            image = Image(image: nsImage)
-                            #else
-                            let uiImage = UIImage(imageLiteralResourceName: imageResource.rawValue)
-                            image = Image(image: uiImage)
-                            #endif
-                            context.insert(image)
-                            definition.images.append(image)
-                            imagesMap[imageResource] = image.uuid
-                        }
+            if definitions.isEmpty {
+                word.insertPlaceholderDefinition()
+            } else {
+                definitions.forEach { (text, wordType, source, groups, images) in
+                    
+                    let definition = word.insertDefinition(text: text)
+                    
+                    if let name = wordType?.rawValue {
+                       definition.wordType = WordType.withName(name, in: context)
+                    } else {
+                        definition.wordType = nil
                     }
-                
-                word.definitions.append(definition)
+                    
+                    if let name = source?.name {
+                        let source = Source.find(name, in: context)
+                        definition.source = source
+                    }
+                    
+                    groups
+                        .compactMap {  Group.find($0.name, in: context) }
+                        .forEach { definition.groups.append($0) }
+                    
+                    images
+                        .forEach { imageResource in
+                            if let uuid = imagesMap[imageResource] {
+                                let image = Image.withUUID(uuid, in: context)
+                                definition.images.append(image)
+                            } else {
+                                let image: Image
+                                #if os(macOS)
+                                let nsImage = NSImage(imageLiteralResourceName: imageResource.rawValue)
+                                image = Image(image: nsImage)
+                                #else
+                                let uiImage = UIImage(imageLiteralResourceName: imageResource.rawValue)
+                                image = Image(image: uiImage)
+                                #endif
+                                context.insert(image)
+                                definition.images.append(image)
+                                imagesMap[imageResource] = image.uuid
+                            }
+                        }
+                    
+                }
             }
+            
+            
         }
     }
     

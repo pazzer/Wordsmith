@@ -21,6 +21,9 @@ struct WordsList: View {
             WordRow(word: word)
         } newItemValidator: { candidateName in
             words.first(where: { $0.word.lowercased() == candidateName.lowercased() }) == nil
+        } addItem: { string, context in
+            _ = Word.new(word: string, in: context)
         }
+        
     }
 }

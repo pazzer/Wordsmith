@@ -49,4 +49,4 @@ Add search bar to WordList
 - [F] Deleting images.
 
 ### Project
-- [B] Give the app an icon.
+- [✓] Give the app an icon.
