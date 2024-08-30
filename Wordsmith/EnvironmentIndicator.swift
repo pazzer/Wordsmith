@@ -73,15 +73,15 @@ struct EnvironmentIndicator: View {
         init() {
             let title: String
             let message: String
-//            if WordsmithApp.configuration == .personal && WordsmithApp.launchedFromXcode && WordsmithApp.storingDataOnDisc {
-//                indicatorLabel = "Danger"
-//                indicatorImage = "exclamationmark.triangle"
-//                indicatorBackground = .red
-//                indicatorForeground = .white
-//                title = "Writing to personal database"
-//                message = "Proceed with extreme caution!"
-//                pulse = true
-//            } else {
+            if WordsmithApp.configuration == .personal && WordsmithApp.launchedFromXcode && WordsmithApp.storingDataOnDisc {
+                indicatorLabel = "Danger"
+                indicatorImage = "exclamationmark.triangle"
+                indicatorBackground = .red
+                indicatorForeground = .white
+                title = "Writing to personal database"
+                message = "Proceed with extreme caution!"
+                pulse = true
+            } else {
                 indicatorLabel = WordsmithApp.configuration.rawValue.capitalized
                 indicatorImage = WordsmithApp.storingDataOnDisc ? "opticaldiscdrive.fill" : "brain.head.profile.fill"
                 if WordsmithApp.configuration == .debug || !WordsmithApp.storingDataOnDisc {
@@ -94,7 +94,7 @@ struct EnvironmentIndicator: View {
                 title = WordsmithApp.storingDataOnDisc ? "Using on-disc storage" : "Using in-memory storage"
                 message = WordsmithApp.storingDataOnDisc ? "Changes will be saved." : "Changes will not be saved."
                 pulse = false
-//            }
+            }
             
             alertModel = .init(title: title, message: message)
         }

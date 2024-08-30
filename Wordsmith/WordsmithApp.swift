@@ -9,11 +9,8 @@ import SwiftUI
 import SwiftData
 import os
 
-
-
 @main
 struct WordsmithApp: App {
-    
     
     static var launchedFromXcode: Bool {
         ProcessInfo.launchedFromXcode
