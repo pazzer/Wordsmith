@@ -23,21 +23,14 @@ struct SearchableWordsList: View {
     init(searchString: String, restrictToRecents: Bool, group: Group) {
         let cutoff = Calendar.autoupdatingCurrent.date(byAdding: .day, value: -3, to: .now)!
         _words = Query(filter: #Predicate {
-            // This code would be better in a switch statement, but the #Predicate macro can't
-            // currently handle them.
             if restrictToRecents {
                 if searchString.isEmpty {
                     return $0.created >= cutoff
                 } else {
                     return $0.created >= cutoff && $0.word.contains(searchString)
                 }
-                
             } else {
-                if searchString.isEmpty {
-                    return $0.created >= cutoff
-                } else {
-                    return $0.created >= cutoff && $0.word.contains(searchString)
-                }
+                return searchString.isEmpty ? true : $0.word.contains(searchString)
             }
         }, sort: Word.defaultSortDescriptors)
         self.group = group

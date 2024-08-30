@@ -130,7 +130,6 @@ struct WordDetail: View {
         
         var body: some View {
             WordDetail(word: word, selectedDefinition: .constant(nil))
-            
         }
     }
     

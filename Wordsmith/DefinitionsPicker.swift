@@ -24,7 +24,7 @@ struct DefinitionsPicker: View {
     @State var restrictToRecents: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             SearchableWordsList(searchString: searchString, restrictToRecents: restrictToRecents, group: group)
                 .padding()
             HStack {

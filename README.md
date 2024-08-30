@@ -4,4 +4,4 @@ Wordsmith is a small SwiftUI/SwiftData app that allows you to store and group wo
 macOS (v 14.0 or later). Once I've got iOS support up and running, I intend to enhance its feature 
 set to create an App Store compliant vocabulary builder.
 
-![](readme-assets/wordsmith-arabesque.png)
+![](readme-assets/wordsmith-animals.png)

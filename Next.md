@@ -38,7 +38,7 @@ Add search bar to WordList
 - [F] Allow user to filter out words that are already part of the selected group.
 - [F] Allow user to order words list according to alphabet and date-added.
 - [✓] Make inspector resizable.
-- [F] Implement filter-by-search
+- [✓] Implement filter by string.
 
 ### Sidebar
 
