@@ -80,8 +80,6 @@ struct WordsmithApp: App {
             SampleDataManager.loadSampleData(into: sharedModelContainer.mainContext)
         }
         
-        
-        
         return WindowGroup {
             ContentView()
         }

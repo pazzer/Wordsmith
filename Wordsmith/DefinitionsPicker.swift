@@ -19,74 +19,55 @@ struct DefinitionsPicker: View {
     
     @State var viewModel = ViewModel()
     
+    @State var searchString: String = ""
+
+    @State var restrictToRecents: Bool = false
+    
     var body: some View {
         VStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack(alignment: .leading) {
-                    ForEach(words) { word in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                if word.isMember(of: group) {
-                                    SwiftUI.Image(systemName: "checkmark")
-                                }
-                                Text(word.word)
-                                    .font(.title3)
-                                Spacer()
-                                if !word.definitions.isEmpty {
-                                    Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
-                                        viewModel.toggle(word)
-                                    }
-                                    .labelStyle(.iconOnly)
-                                    .buttonStyle(PlainButtonStyle())
-                                }
-                                
-                                
-                            }
-                            if viewModel.isExpanded(word) {
-                                VStack(alignment: .leading) {
-                                    ForEach(word.definitions) { definition in
-                                        Toggle(isOn: binding(for: definition)) {
-                                            Text(definition.definition)
-                                        }
-                                    }
-                                }
-                                .padding([.leading, .bottom], 16)
-                            }
-                            
-                        }
-                    }
-                }
-            }
+            SearchableWordsList(searchString: searchString, restrictToRecents: restrictToRecents, group: group)
+                .padding()
             HStack {
-                Spacer()
-                Menu {
-                    SwiftUI.Group {
-                        Button(action: {
-                            viewModel.collapseAll()
-                        }, label: {
-                            Label("Collapse All", systemImage: "chevron.right")
-                        })
-                        .disabled(viewModel.expanded.isEmpty)
-                        Button(action: {
-                            viewModel.expandAll(in: context)
-                        }, label: {
-                            Label("Expand All", systemImage: "chevron.down")
-                                
-                        })
-                        .disabled(
-                            Word.all(in: context).count == viewModel.expanded.count
-                        )
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.filterBarStroke)
+                    .fill(.filterBarBackground)
+                    .overlay {
+                        HStack {
+                            TextField("Search Words", text: $searchString, prompt: Text("Filter"))
+                                .textFieldStyle(.plain)
+                                .padding(.horizontal, 8)
+                                .font(.caption)
+                            Spacer()
+                            HStack {
+                                if !searchString.isEmpty {
+                                    Button(action: {
+                                        searchString = ""
+                                    }) {
+                                        Label("Clear", systemImage: "xmark.circle.fill")
+                                            .foregroundStyle(.secondary)
+                                            
+                                    }
+                                    .controlSize(.small)
+                                }
+                                Button(action: {
+                                    restrictToRecents.toggle()
+                                }) {
+                                    Label("Recents", systemImage: restrictToRecents ? "clock.fill" : "clock")
+                                        .foregroundStyle(restrictToRecents ? Color.accentColor : Color.secondary)
+                                }
+                            }
+                            .padding(.trailing, 8)
+                        }
+                        
                     }
-                    .labelStyle(.titleAndIcon)
-                    
-                } label: {
-                    Label("Expand All/Collapse All", systemImage: "eye")
-                }
-                .buttonStyle(PlainButtonStyle())
-                .labelStyle(.iconOnly)
+                    .buttonStyle(PlainButtonStyle())
+                    .labelStyle(IconOnlyLabelStyle())
+                    .frame(maxHeight: 24)
             }
+            .padding(.horizontal, 7)
+            .padding(.bottom, 6)
         }
-        .padding()
+        
     }
 
     

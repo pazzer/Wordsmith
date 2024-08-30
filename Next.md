@@ -7,6 +7,8 @@
 > B: Bug
 
 ### Priority Tickets
+Improve look and functionality of the inspectors words table used to populate groups.
+Show images in the words summary view.
 Separate GroupView rows to make adding images better (stop all photo icons lighting up).
 Adding nationality, archaic
 Dealing with exact synonyms (saloon/sedan; bosun/boatswain).

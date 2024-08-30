@@ -43,7 +43,6 @@ struct EnvironmentIndicator: View {
             Spacer()
         }
         .background(viewModel.indicatorBackground)
-        
         .alert(isPresented: $showInfo, content: {
             Alert(title: Text(viewModel.alertModel.title), message: Text(viewModel.alertModel.message))
         })
@@ -72,8 +71,6 @@ struct EnvironmentIndicator: View {
         let pulse: Bool
         
         init() {
-            
-            
             let title: String
             let message: String
             if WordsmithApp.configuration == .personal && WordsmithApp.launchedFromXcode && WordsmithApp.storingDataOnDisc {
@@ -81,8 +78,8 @@ struct EnvironmentIndicator: View {
                 indicatorImage = "exclamationmark.triangle"
                 indicatorBackground = .red
                 indicatorForeground = .white
-                title = "Using in-memory"
-                message = "Proceed with extreme caution. Changes made here will be saved to your personal Wordsmith database."
+                title = "Writing to personal database"
+                message = "Proceed with extreme caution!"
                 pulse = true
             } else {
                 indicatorLabel = WordsmithApp.configuration.rawValue.capitalized
@@ -100,11 +97,7 @@ struct EnvironmentIndicator: View {
             }
             
             alertModel = .init(title: title, message: message)
-
-            
-            
         }
-        
     }
 }
 
