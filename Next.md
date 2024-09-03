@@ -8,15 +8,13 @@
 
 ### Priority Tickets
 Adding words, groups, and sources via main menu/keyboard shortcut.
-Improve look and functionality of the inspectors words table used to populate groups.
 Show images in the words summary view.
 Adding nationality, archaic
 Dealing with exact synonyms (saloon/sedan; bosun/boatswain).
-Add search bar to WordList
 
 
 ### WordList
-- [F] Search bar
+- [✓] Search bar
 
 ### Model
 - [✓] Add generic `fetchByUUID` static method to all persistent model classes (currently only available on `Definition`).
@@ -36,9 +34,6 @@ Add search bar to WordList
 ### Inspector
 - [✓] Get expand-all/collapse-all working for inspector's words list.
 - [F] Allow user to filter out words that are already part of the selected group.
-- [F] Allow user to order words list according to alphabet and date-added.
-- [✓] Make inspector resizable.
-- [✓] Implement filter by string.
 
 ### Sidebar
 
@@ -48,4 +43,4 @@ Add search bar to WordList
 - [F] Deleting images.
 
 ### Project
-- [✓] Give the app an icon.
+🏴󠁧󠁢󠁳󠁣󠁴󠁿

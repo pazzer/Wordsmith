@@ -30,6 +30,9 @@ final class Definition: UUIDAble, WordsmithModel {
     
     var source: Source?
     
+    @Relationship(inverse: \Country.definitions)
+    var countries: [Country] = []
+    
     func add(_ image: SDImage) {
         images.append(image)
     }

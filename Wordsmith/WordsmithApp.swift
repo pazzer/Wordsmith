@@ -71,6 +71,8 @@ struct WordsmithApp: App {
             WordType.installPresets(in: sharedModelContainer.mainContext)
         }
         
+        Country.installPresets(in: sharedModelContainer.mainContext)
+        
         if Self.configuration == .debug {
             SampleDataManager.loadSampleData(into: sharedModelContainer.mainContext)
         }

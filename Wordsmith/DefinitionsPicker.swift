@@ -26,7 +26,6 @@ struct DefinitionsPicker: View {
                     if word.isMember(of: group) {
                         Button("Deselect All Definitions", systemImage: "checkmark.circle.fill") {
                             removeAllDefinitions(word)
-                                
                         }
                     } else {
                         Button("Select All Definitions", systemImage: "circle") {
