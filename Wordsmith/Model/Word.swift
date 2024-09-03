@@ -132,6 +132,8 @@ final public class Word: CustomDebugStringConvertible, StringIdentifiable, UUIDA
         Logger.database.info("deleted placeholder definition belonging to '\(self.word)'")
     }
     
+    
+    
 }
 
 /// StringIdentifiable conformace
@@ -187,7 +189,9 @@ extension Word {
         return word
     }
     
-    
+    static func alreadyExists(string: String, in context: ModelContext) -> Bool {
+        Word.all(in: context).first { $0.word.lowercased() == string.lowercased() } != nil
+    }
     
     
     

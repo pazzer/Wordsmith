@@ -8,66 +8,69 @@
 import SwiftUI
 import SwiftData
 
+
+
+
 struct DefinitionsPicker: View {
     
     @Environment(\.modelContext) private var context
-    
-    @Query(sort: \Word.word, order: .forward)
-    var words: [Word]
     
     @Bindable var group: Group
     
     @State var viewModel = ViewModel()
     
-    @State var searchString: String = ""
-
-    @State var restrictToRecents: Bool = false
-    
     var body: some View {
-        VStack(spacing: 8) {
-            SearchableWordsList(searchString: searchString, restrictToRecents: restrictToRecents, group: group)
-                .padding()
-            HStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.filterBarStroke)
-                    .fill(.filterBarBackground)
-                    .overlay {
-                        HStack {
-                            TextField("Search Words", text: $searchString, prompt: Text("Filter"))
-                                .textFieldStyle(.plain)
-                                .padding(.horizontal, 8)
-                                .font(.caption)
-                            Spacer()
-                            HStack {
-                                if !searchString.isEmpty {
-                                    Button(action: {
-                                        searchString = ""
-                                    }) {
-                                        Label("Clear", systemImage: "xmark.circle.fill")
-                                            .foregroundStyle(.secondary)
-                                            
-                                    }
-                                    .controlSize(.small)
-                                }
-                                Button(action: {
-                                    restrictToRecents.toggle()
-                                }) {
-                                    Label("Recents", systemImage: restrictToRecents ? "clock.fill" : "clock")
-                                        .foregroundStyle(restrictToRecents ? Color.accentColor : Color.secondary)
-                                }
-                            }
-                            .padding(.trailing, 8)
+        SearchableWords(selection: .constant(nil), rowView: { word in
+            VStack(alignment: .leading) {
+                HStack {
+                    if word.isMember(of: group) {
+                        Button("Deselect All Definitions", systemImage: "checkmark.circle.fill") {
+                            removeAllDefinitions(word)
+                                
+                        }
+                    } else {
+                        Button("Select All Definitions", systemImage: "circle") {
+                            addAllDefinitions(word)
+                        }
+                    }
+                    Text(word.word)
+                        .font(.system(size: 14))
+                    Spacer()
+                    if !word.definitionIsPlaceholder {
+                        Button("Expand/Collapse", systemImage: viewModel.isExpanded(word) ? "chevron.down" : "chevron.right") {
+                            viewModel.toggle(word)
                         }
                         
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .labelStyle(IconOnlyLabelStyle())
-                    .frame(maxHeight: 24)
+                }
+                .labelStyle(.iconOnly)
+                .buttonStyle(PlainButtonStyle())
+                if viewModel.isExpanded(word) {
+                    VStack(alignment: .leading) {
+                        ForEach(word.definitions) { definition in
+                            Toggle(isOn: binding(for: definition)) {
+                                Text(definition.definition)
+                            }
+                        }
+                    }
+                    .padding([.leading, .bottom], 16)
+                }
             }
-            .padding(.horizontal, 7)
-            .padding(.bottom, 6)
+            .listRowSeparator(.hidden)
+        })
+        .searchableWordsBackground(.clear)
+    }
+
+    func addAllDefinitions(_ word: Word) {
+        word.definitions.forEach { definition in
+            group.add(definition)
         }
-        
+    }
+    
+    func removeAllDefinitions(_ word: Word) {
+        word.definitions.forEach { definition in
+            group.remove(definition)
+        }
     }
 
     

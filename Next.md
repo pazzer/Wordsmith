@@ -10,7 +10,6 @@
 Adding words, groups, and sources via main menu/keyboard shortcut.
 Improve look and functionality of the inspectors words table used to populate groups.
 Show images in the words summary view.
-Separate GroupView rows to make adding images better (stop all photo icons lighting up).
 Adding nationality, archaic
 Dealing with exact synonyms (saloon/sedan; bosun/boatswain).
 Add search bar to WordList

@@ -17,13 +17,30 @@ struct WordsList: View {
     @Binding var selection: Word?
     
     var body: some View {
-        ContentList(selection: $selection) { word in
+        SearchableWords(selection: $selection, rowView: { word in
             WordRow(word: word)
-        } newItemValidator: { candidateName in
-            words.first(where: { $0.word.lowercased() == candidateName.lowercased() }) == nil
-        } addItem: { string, context in
-            _ = Word.new(word: string, in: context)
-        }
-        
+        }, includeAddOption: true)
+        .searchableWordsBackground(.white)
+    }
+}
+
+struct SearchableWordsBackground: ViewModifier {
+    
+    var color: Color
+    
+    init(_ color: Color) {
+        self.color = color
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .scrollContentBackground(.hidden)
+            .background(color)
+    }
+}
+
+extension View {
+    func searchableWordsBackground(_ color: Color) -> some View {
+        modifier(SearchableWordsBackground(color))
     }
 }

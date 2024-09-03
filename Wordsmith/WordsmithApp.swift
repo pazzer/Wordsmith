@@ -67,8 +67,6 @@ struct WordsmithApp: App {
             Logger.database.warning("using on-disk store but failed to access store url.")
         }
         
-
-        
         if WordType.all(in: sharedModelContainer.mainContext).isEmpty {
             WordType.installPresets(in: sharedModelContainer.mainContext)
         }
